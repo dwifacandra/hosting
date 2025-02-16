@@ -24,16 +24,7 @@ trait Navigations
             NavigationGroup::make()
                 ->label(__('core.blog.label'))
                 ->icon(__('core.blog.icon'))
-                ->items([
-                    ...self::canAccess(FilamentBlog\CategoryResource::getNavigationItems(), 'category'),
-                    ...self::canAccess(FilamentBlog\PostResource::getNavigationItems(), 'post'),
-                    ...self::canAccess(FilamentBlog\TagResource::getNavigationItems(), 'tag'),
-                    ...self::canAccess(FilamentBlog\SeoDetailResource::getNavigationItems(), 'seo::detail'),
-                    ...self::canAccess(FilamentBlog\NewsletterResource::getNavigationItems(), 'newsletter'),
-                    ...self::canAccess(FilamentBlog\CommentResource::getNavigationItems(), 'comment'),
-                    ...self::canAccess(FilamentBlog\ShareSnippetResource::getNavigationItems(), 'share::snippet'),
-                    ...self::canAccess(FilamentBlog\SettingResource::getNavigationItems(), 'setting'),
-                ]),
+                ->items([]),
             NavigationGroup::make()
                 ->label(__('core.access.label'))
                 ->icon(__('core.access.icon'))

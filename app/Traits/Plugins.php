@@ -7,7 +7,6 @@ trait Plugins
     public static function getAll(): array
     {
         return [
-            \Firefly\FilamentBlog\Blog::make(),
             \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
                 ->gridColumns([
                     'default' => 1,

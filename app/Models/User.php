@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Spatie\Permission\Traits\HasRoles;
-use Firefly\FilamentBlog\Traits\HasBlog;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,7 +12,7 @@ use Filament\Models\Contracts\{FilamentUser, HasAvatar, HasName};
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  HasName
 {
-    use HasRoles, HasFactory, Notifiable,  HasBlog, SoftDeletes;
+    use HasRoles, HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [
         'username',
@@ -37,11 +36,6 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  Ha
     }
 
     public function canAccessPanel(\Filament\Panel $panel): bool
-    {
-        return true;
-    }
-
-    public function canComment(): bool
     {
         return true;
     }
