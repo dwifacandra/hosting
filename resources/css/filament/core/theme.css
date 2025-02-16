@@ -1,0 +1,762 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+@config 'tailwind.config.js';
+
+/* ROOT */
+* {
+    scrollbar-width: thin;
+}
+
+/* HTML */
+html {
+    font-size: 14px;
+}
+
+/* BODY */
+.fi-body {
+    @apply min-h-screen antialiased font-normal bg-secondary-100 text-secondary-950 dark:bg-secondary-950 dark:text-white;
+}
+
+/* BUTTON */
+.fi-btn {
+    @apply rounded-sm;
+}
+
+/* INPUT */
+.fi-input-wrp {
+    @apply rounded-sm;
+}
+
+/* NOTIFICATION */
+.fi-no {
+    @apply pointer-events-none
+    fixed inset-0 z-50
+    mx-auto  gap-0 top-10
+    flex flex-col-reverse items-end justify-end;
+}
+.fi-no .fi-no-notification {
+    @apply max-w-xs rounded-none shadow-md;
+}
+.fi-no .fi-no-notification > div {
+    @apply p-2 gap-1 justify-center;
+}
+.fi-no .fi-no-notification .fi-no-notification-icon {
+    @apply size-4 shrink-0 mt-1;
+}
+.fi-no .fi-no-notification .fi-no-notification-title,
+.fi-no .fi-no-notification .fi-no-notification-body {
+    @apply text-sm text-balance line-clamp-1;
+}
+
+/**************************************************************************************************/
+/* TOPBAR */
+.fi-topbar {
+    @apply sticky top-0 z-20 overflow-x-clip;
+}
+/* .fi-topbar-with-navigation {} */
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR NAVIGATION */
+.fi-topbar > nav {
+    @apply flex items-center h-10 px-4 bg-white shadow-none gap-x-4 ring-0 dark:bg-gray-900 border-b-2 border-b-primary md:px-4 lg:px-4;
+}
+.fi-topbar > nav > div[x-persist="topbar.end"] {
+    @apply gap-x-1;
+}
+.fi-topbar > nav > div[x-persist="topbar.end"] svg {
+    @apply text-gray-500;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR ITEM */
+/* .fi-topbar .fi-topbar-item {} */
+/* .fi-topbar .fi-topbar-item-active {} */
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR ITEM BUTTON */
+.fi-topbar .fi-topbar-item .fi-topbar-item-button {
+    @apply flex items-center justify-center gap-x-2 rounded-lg px-3 py-2 outline-none transition duration-75 hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5;
+}
+.fi-topbar .fi-topbar-item-active .fi-topbar-item-button {
+    @apply bg-gray-50 dark:bg-white/5;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR ITEM ICON */
+.fi-topbar .fi-topbar-item .fi-topbar-item-icon {
+    @apply h-5 w-5 text-gray-400 dark:text-gray-500;
+}
+.fi-topbar .fi-topbar-item-active .fi-topbar-item-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR ITEM LABEL */
+.fi-topbar .fi-topbar-item .fi-topbar-item-label {
+    @apply text-sm font-medium text-gray-700 dark:text-gray-200;
+}
+.fi-topbar .fi-topbar-item-active .fi-topbar-item-label {
+    @apply text-primary-600 dark:text-primary-400;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR GRPUP TOGGLE */
+.fi-topbar .fi-topbar-item .fi-topbar-group-toggle-icon {
+    @apply h-5 w-5 text-gray-400 dark:text-gray-500;
+}
+.fi-topbar .fi-topbar-item-active .fi-topbar-group-toggle-icon {
+    @apply text-primary-600 dark:text-primary-400;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR GLOBAL SEARCH */
+.fi-topbar .fi-global-search-field .fi-input-wrp {
+    @apply h-full border border-gray-300 ring-0 bg-white shadow-none [&:not(:has(.fi-ac-action:focus))]:focus-within:ring-1;
+}
+.fi-topbar .fi-global-search-field .fi-input-wrp-prefix {
+    @apply ps-1 pe-1;
+}
+.fi-topbar .fi-global-search-field .fi-input-wrp-input {
+    @apply justify-center;
+}
+.fi-topbar .fi-global-search-field .fi-input-wrp-input .fi-input {
+    @apply p-1 md:p-0 text-sm;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR NOTIFICATION BUTTON */
+.fi-topbar .fi-topbar-database-notifications-btn {
+    @apply before:border-s before:border-gray-300 before:h-full before:mx-1 m-0 bg-white focus-visible:ring-1 h-full w-full rounded-none;
+}
+.fi-topbar .fi-topbar-database-notifications-btn .fi-icon-btn-icon {
+    @apply shrink-0 size-8 p-1 md:p-0 md:size-6;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TOPBAR AVATAR */
+.fi-topbar .fi-user-menu {
+    @apply h-full bg-white rounded-none;
+}
+.fi-topbar .fi-user-menu .fi-user-avatar {
+    @apply size-8 md:size-6 shrink-0;
+}
+
+/**************************************************************************************************/
+/* SIDEBAR */
+.fi-sidebar {
+    @apply md:w-10 z-30 flex flex-col h-screen content-start bg-white transition-all dark:bg-gray-900;
+}
+.fi-sidebar > div {
+    @apply overflow-x-clip;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* SIDEBAR HEADER */
+.fi-sidebar .fi-sidebar-header {
+    @apply flex items-center justify-between h-10 px-0 bg-primary ring-0 dark:bg-gray-900 lg:shadow-none;
+}
+.fi-sidebar .fi-sidebar-header > div {
+    @apply flex-1;
+}
+.fi-sidebar .fi-sidebar-header .fi-logo {
+    @apply flex text-lg px-6 md:px-4 uppercase font-bold leading-5 tracking-tight text-white;
+}
+.fi-sidebar .fi-sidebar-header .fi-icon-btn {
+    @apply size-full shrink-0 rounded-none m-0;
+}
+.fi-sidebar .fi-sidebar-header .fi-icon-btn .fi-icon-btn-icon {
+    @apply size-6 text-white;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* SIDEBAR NAVIGATION */
+.fi-sidebar .fi-sidebar-nav {
+    @apply w-full !gap-y-1 px-0 py-0 shadow-none border-r border-r-gray-200;
+    scrollbar-gutter: unset;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.fi-sidebar .fi-sidebar-nav-groups {
+    @apply gap-y-0;
+}
+.fi-sidebar .fi-dropdown-trigger button {
+    @apply gap-x-0 rounded-none px-0 py-0 size-8;
+}
+.fi-sidebar svg {
+    @apply size-6 shrink-0 text-gray-500;
+}
+.fi-sidebar .fi-dropdown-panel {
+    @apply rounded-none -ml-3 z-20;
+}
+.fi-sidebar
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item-active
+    .fi-sidebar-item-button {
+    @apply bg-white hover:bg-gray-100;
+}
+
+/**************************************************************************************************/
+/* SIDEBAR OPEN */
+.fi-sidebar-open {
+    @apply md:!w-1/6 translate-x-0 shadow-none ring-0;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* SIDEBAR HEADER */
+.fi-sidebar-open .fi-sidebar-header .fi-icon-btn {
+    @apply h-full w-8 shrink-0 rounded-none m-0;
+}
+.fi-sidebar-open .fi-sidebar-header .fi-icon-btn .fi-icon-btn-icon {
+    @apply size-6;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* SIDEBAR NAVIGATION */
+.fi-sidebar-open .fi-sidebar-nav {
+    @apply gap-y-0 px-6 py-6 md:px-4 md:py-4 w-full;
+}
+.fi-sidebar-open .fi-sidebar-nav .fi-sidebar-nav-groups {
+    @apply m-0 gap-y-2 md:gap-y-4 space-y-4 md:space-y-0;
+}
+.fi-sidebar-open .fi-sidebar-nav .fi-sidebar-nav-groups .fi-sidebar-group {
+    @apply gap-y-2;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-group-button {
+    @apply gap-x-2 px-0 py-0;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-group-button
+    .fi-sidebar-group-icon {
+    @apply size-6 shrink-0;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-group-button
+    .fi-sidebar-group-label {
+    @apply text-sm text-inherit font-normal leading-none;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-group-button
+    .fi-icon-btn {
+    @apply rounded-none m-0 size-6 shrink-0 text-gray-500;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-group-items {
+    @apply gap-y-0;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item {
+    @apply gap-y-0;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item
+    .fi-sidebar-item-button {
+    @apply gap-x-2 rounded-none px-2 -ml-2 py-1;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item
+    .fi-sidebar-item-button
+    .fi-sidebar-item-grouped-border {
+    @apply shrink-0 size-6;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item
+    .fi-sidebar-item-button
+    .fi-sidebar-item-label {
+    @apply text-sm  text-inherit font-normal;
+}
+.fi-sidebar-open
+    .fi-sidebar-nav
+    .fi-sidebar-nav-groups
+    .fi-sidebar-group
+    .fi-sidebar-item
+    .fi-sidebar-item-button
+    .fi-badge {
+    @apply text-[10px] p-0 font-thin;
+}
+
+/**************************************************************************************************/
+/* MAIN */
+.fi-main {
+    @apply mx-auto h-full min-h-[80vh] w-full px-2 md:px-4 lg:px-4 max-w-full;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* PAGE */
+.fi-page > section {
+    @apply flex flex-col py-0 gap-y-2;
+}
+.fi-page > section > div {
+    @apply flex flex-col has-[.fi-page-sub-navigation-sidebar-ctn]:flex-row gap-x-0.5 gap-y-0.5 p-0 m-0;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* PAGE HEADER */
+.fi-page .fi-header {
+    @apply gap-0 flex-none grid grid-cols-2 pt-1.5 has-[.fi-breadcrumbs]:mt-8;
+}
+.fi-page .fi-header > div {
+    @apply flex flex-row gap-0 h-full items-end;
+}
+.fi-page .fi-header > div > .fi-header-heading {
+    @apply select-none text-xl h-full place-content-center font-semibold flex-1 capitalize px-0;
+}
+.fi-page .fi-header > div > .fi-header-subheading {
+    @apply hidden;
+}
+.fi-page .fi-header > div + div {
+    @apply gap-0 m-0 justify-end items-center px-2;
+}
+.fi-page .fi-header > div + div .fi-ac {
+    @apply flex flex-wrap items-center justify-start gap-2;
+}
+.fi-page .fi-header > div + div .fi-ac .fi-ac-action {
+    @apply font-semibold rounded-none gap-2 px-2 py-1 text-sm inline-grid shadow-none;
+}
+.fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-icon {
+    @apply size-4;
+}
+.fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-label {
+    @apply hidden md:block;
+}
+
+/**************************************************************************************************/
+/* BREADCRUMB */
+.fi-breadcrumbs {
+    @apply bg-white
+    shadow-md md:shadow-none
+    border-gray-200 border-b
+    px-4 py-1 select-none -ml-2 md:-ml-4
+    w-full flex fixed top-10 z-10;
+}
+.fi-breadcrumbs .fi-breadcrumbs-list {
+    @apply flex flex-wrap items-center gap-x-1;
+}
+.fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item {
+    @apply flex items-center gap-x-1 capitalize;
+}
+.fi-breadcrumbs
+    .fi-breadcrumbs-list
+    .fi-breadcrumbs-item
+    .fi-breadcrumbs-item-label {
+    @apply text-sm font-medium text-gray-800 dark:text-gray-400 transition duration-75 hover:text-gray-700 dark:hover:text-gray-200;
+}
+.fi-breadcrumbs
+    .fi-breadcrumbs-list
+    .fi-breadcrumbs-item
+    .fi-breadcrumbs-item-separator {
+    @apply size-4 text-gray-500 dark:text-gray-500;
+}
+
+/**************************************************************************************************/
+/* SECTION */
+.fi-section {
+    @apply rounded-none;
+}
+
+/**************************************************************************************************/
+/* TABS */
+.fi-tabs {
+    @apply px-0 py-0 w-full overflow-x-auto bg-white shadow-none gap-x-0 m-0 rounded-none ring-1 ring-gray-200;
+}
+.fi-tabs .fi-tabs-item {
+    @apply flex items-center justify-center
+    py-1 px-2 gap-2 whitespace-nowrap
+    border-e border-gray-200 rounded-none outline-none
+    text-sm font-medium transition duration-75
+    hover:bg-gray-50
+    focus-visible:bg-gray-50
+    dark:hover:bg-white/5
+    dark:focus-visible:bg-white/5;
+}
+.fi-tabs .fi-tabs-item-active {
+    @apply border-b-primary-500 border-b-2 bg-white;
+}
+.fi-tabs .fi-tabs-item .fi-tabs-item-icon {
+    @apply size-4 text-gray-800;
+}
+.fi-tabs .fi-tabs-item .fi-tabs-item-label {
+    @apply p-0 text-gray-800;
+}
+.fi-tabs .fi-tabs-item .fi-badge {
+    @apply rounded-none leading-3;
+}
+
+/**************************************************************************************************/
+/* TABLE */
+.fi-ta .fi-ta-ctn {
+    @apply overflow-hidden bg-white divide-y divide-gray-200 shadow-none rounded-none ring-1 ring-gray-200;
+}
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn {
+    @apply divide-y divide-gray-200;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE TOOLBAR */
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar {
+    @apply flex items-center justify-between pl-4 pr-2 py-2 gap-x-1 overflow-x-auto;
+    scrollbar-width: none;
+}
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar > div {
+    @apply flex items-center shrink-0 gap-x-1;
+}
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar > div + div {
+    @apply flex items-center ms-auto gap-x-1;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown {
+    @apply sm:hidden md:block;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger {
+    @apply flex cursor-pointer;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger
+    .fi-ac-icon-btn-action {
+    @apply border border-gray-200 w-7 h-full m-0;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger
+    .fi-ac-icon-btn-action
+    .fi-icon-btn-icon {
+    @apply size-6 shrink-0 p-1 text-gray-900;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div {
+    @apply gap-x-1;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div
+    .fi-input-wrp {
+    @apply flex shadow-none ring-0 rounded-none border border-gray-200 min-w-24;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div
+    .fi-input-wrp
+    .fi-input-wrp-input {
+    @apply min-w-0 flex-1;
+}
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar .fi-select-input {
+    @apply p-0 px-2;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE TOOLBAR ACTION */
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar .fi-ta-actions {
+    @apply flex items-center justify-between gap-0 m-0 p-0 shrink-0;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger {
+    @apply gap-1;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-icon-btn {
+    @apply relative flex items-center justify-center gap-0 border border-gray-200 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit md:hidden;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-btn {
+    @apply relative md:flex items-center justify-center gap-0 pr-2 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit hidden;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-icon-btn
+    .fi-icon-btn-icon,
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-btn
+    .fi-btn-icon {
+    @apply shrink-0 size-6 p-1 text-gray-950;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-panel {
+    @apply absolute z-[5] w-screen divide-y divide-gray-200 rounded-none bg-white shadow-md ring-1 ring-gray-200 !max-w-fit;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-panel
+    .fi-dropdown-list {
+    @apply p-0;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-panel
+    .fi-dropdown-list
+    .fi-dropdown-list-item {
+    @apply flex items-center w-full gap-1 px-2 py-1 justify-between text-sm transition-colors duration-75 rounded-none outline-none whitespace-nowrap disabled:pointer-events-none disabled:opacity-70;
+}
+.fi-ta
+    .fi-ta-actions
+    .fi-dropdown-panel
+    .fi-dropdown-list
+    .fi-dropdown-list-item
+    .fi-dropdown-list-item-icon {
+    @apply size-4 shrink-0;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE TOOLBAR SEARCH */
+.fi-ta .fi-ta-search-field .fi-input-wrp {
+    @apply h-full border border-gray-200 ring-0 bg-transparent shadow-none [&:not(:has(.fi-ac-action:focus))]:focus-within:ring-1;
+}
+.fi-ta .fi-ta-search-field .fi-input-wrp-prefix {
+    @apply ps-1 pe-1;
+}
+.fi-ta .fi-ta-search-field .fi-input-wrp-input {
+    @apply justify-center;
+}
+.fi-ta .fi-ta-search-field .fi-input-wrp-input .fi-input {
+    @apply p-0 text-sm;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE TOOLBAR FILTER */
+.fi-ta .fi-ta-filters-dropdown .fi-dropdown-trigger .fi-ac-action {
+    @apply relative flex items-center justify-center text-gray-500 border border-gray-200 rounded-none h-full w-full m-0 hover:text-gray-500;
+}
+.fi-ta
+    .fi-ta-filters-dropdown
+    .fi-dropdown-trigger
+    .fi-ac-action
+    .fi-icon-btn-icon {
+    @apply shrink-0 size-6 p-1;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE TOOLBAR TOOGLE COLUMN */
+.fi-ta .fi-ta-col-toggle .fi-dropdown-trigger .fi-ac-action {
+    @apply relative flex items-center justify-center text-gray-500 border border-gray-200 rounded-none h-full w-full m-0 hover:text-gray-500;
+}
+.fi-ta .fi-ta-col-toggle .fi-dropdown-trigger .fi-ac-action .fi-icon-btn-icon {
+    @apply shrink-0 size-6 p-1;
+}
+.fi-ta .fi-ta-ctn .fi-ta-selection-indicator {
+    @apply px-2 py-0;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE CONTENT */
+.fi-ta .fi-ta-content {
+    @apply divide-y divide-gray-200 overflow-auto relative h-[70vh];
+}
+.fi-ta .fi-ta-content .fi-ta-table {
+    @apply w-full table-auto divide-y divide-gray-200 text-start;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE CONTENT HEADER */
+.fi-ta .fi-ta-content .fi-ta-table > thead {
+    @apply bg-gray-100 divide-y divide-gray-200;
+}
+.fi-ta .fi-ta-content .fi-ta-table > thead > tr {
+    @apply bg-gray-100 sticky top-0 z-[1];
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell {
+    @apply px-4 py-1 sm:first-of-type:ps-4 sm:last-of-type:pe-4 bg-gray-100 border-r border-r-gray-200 last-of-type:border-r-0;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell > button {
+    @apply flex w-full items-center gap-x-1 whitespace-nowrap justify-between;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell .fi-ta-header-cell-label {
+    @apply text-sm font-medium text-gray-900;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-header-cell
+    .fi-ta-header-cell-sort-icon {
+    @apply size-4 shrink-0 transition duration-75 text-gray-500 group-hover:text-gray-600 group-focus-visible:text-gray-600;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE CONTENT BODY */
+.fi-ta .fi-ta-content .fi-ta-table > tbody {
+    @apply divide-y divide-gray-200 whitespace-nowrap;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row {
+    @apply hover:bg-gray-50;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header {
+    @apply flex w-full items-center bg-gray-50 gap-x-2 px-2 py-0.5 cursor-pointer;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header > div > h4 {
+    @apply text-sm font-normal text-gray-800;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header .fi-icon-btn {
+    @apply size-4 shrink-0 text-gray-800;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-cell {
+    @apply p-0 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0 border-r border-r-gray-200 last-of-type:border-r-0;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-actions-cell {
+    @apply border-r-0 p-0 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text {
+    @apply grid w-full gap-y-1 gap-x-1 px-2 py-2;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text
+    > div {
+    @apply flex gap-0.5 flex-wrap text-left justify-start;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text
+    .fi-badge {
+    @apply flex items-center justify-center gap-x-1 rounded-none text-xs font-medium ring-1 ring-inset px-2 py-0.5;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-actions-cell
+    .fi-ta-actions {
+    @apply flex shrink-0 items-center gap-1 justify-end;
+}
+.fi-ta .fi-ta-content .fi-badge {
+    @apply py-1 px-3 gap-x-2 justify-between text-sm text-left;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE PAGINATION */
+.fi-ta .fi-pagination {
+    @apply flex justify-between items-center gap-x-0 px-0 py-0 sm:px-0;
+}
+.fi-ta .fi-pagination .fi-pagination-overview {
+    @apply px-4 py-0 text-sm font-medium flex-1 text-gray-700 dark:text-gray-200;
+}
+.fi-ta .fi-pagination > div {
+    @apply col-start-2 justify-self-auto border-r;
+}
+.fi-ta .fi-pagination .fi-pagination-records-per-page-select .fi-input-wrp {
+    @apply select-none flex rounded-none shadow-sm ring-0 transition duration-75 bg-white dark:bg-white/5;
+}
+.fi-ta .fi-pagination .fi-pagination-items {
+    @apply bg-white rounded-none shadow-none justify-self-end ring-0 dark:bg-white/5;
+}
+.fi-ta .fi-pagination .fi-pagination-items .fi-pagination-item {
+    @apply border-0 border-e first:border-s-0 last:border-e-0 dark:border-white/10;
+}
+.fi-ta
+    .fi-pagination
+    .fi-pagination-items
+    .fi-pagination-item
+    .fi-pagination-item-button {
+    @apply rounded-none;
+}
+/*------------------------------------------------------------------------------------------------*/
+/* TABLE CONTENT SELECTION */
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell,
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-group-selection-cell {
+    @apply py-0 px-0
+    first-of-type:ps-0 last-of-type:pe-0
+    sm:first-of-type:ps-0 sm:last-of-type:pe-0 w-1;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell > div,
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-group-selection-cell
+    > div {
+    @apply px-4 py-0;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell > div > label {
+    @apply flex;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell .fi-checkbox-input {
+    @apply rounded-none size-4 ring-gray-200 ring-1;
+}
