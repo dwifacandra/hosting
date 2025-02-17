@@ -4,7 +4,7 @@ return [
     'shield_resource' => [
         'should_register_navigation' => true,
         'slug' => 'roles',
-        'navigation_sort' => -1,
+        'navigation_sort' => 0,
         'navigation_badge' => true,
         'navigation_group' => false,
         'is_globally_searchable' => false,
@@ -21,7 +21,7 @@ return [
 
     'super_admin' => [
         'enabled' => true,
-        'name' => 'su',
+        'name' => 'root',
         'define_via_gate' => false,
         'intercept_gate' => 'before', // after
     ],

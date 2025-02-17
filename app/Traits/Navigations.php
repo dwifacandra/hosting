@@ -5,7 +5,7 @@ namespace App\Traits;
 use Filament\Pages\Dashboard;
 use Firefly\FilamentBlog\Resources as FilamentBlog;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
-use App\Filament\Clusters\{Access,};
+use App\Filament\Clusters\{Access, Collections};
 
 trait Navigations
 {
@@ -25,6 +25,12 @@ trait Navigations
                 ->label(__('core.blog.label'))
                 ->icon(__('core.blog.icon'))
                 ->items([]),
+            NavigationGroup::make()
+                ->label(__('core.collection.label'))
+                ->icon(__('core.collection.icon'))
+                ->items([
+                    ...self::canAccess(Collections\Resources\IconResource::getNavigationItems(), 'user'),
+                ]),
             NavigationGroup::make()
                 ->label(__('core.access.label'))
                 ->icon(__('core.access.icon'))

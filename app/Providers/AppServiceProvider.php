@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         \Filament\Tables\Table::configureUsing(
             function (\Filament\Tables\Table $table): void {
                 $table
+                    ->poll('10s')
                     ->emptyStateHeading('No data yet')
                     ->deferLoading()->deferFilters()
                     ->defaultPaginationPageOption(10)

@@ -18,26 +18,38 @@ return [
     */
     'access'          => [
         'label'       => 'Access Management',
-        'icon'        => 'fluentui-image-shadow-24',
-        'icon_active' => 'fluentui-image-shadow-24',
+        'icon'        => 'fill.lock_clock',
+        'icon_active' => 'outline.lock_clock',
         'users'      => [
             'label'       => 'Users',
             'title'       => 'Users',
             'heading'     => 'Users',
             'subheading'  => '',
-            'icon'        => 'fluentui-image-shadow-24',
-            'icon_active' => 'fluentui-image-shadow-24',
+            'icon'        => 'outline.frame_person',
+            'icon_active' => 'fill.frame_person',
+            'field'                 => [
+                'username'          => 'Username',
+                'firstname'         => 'First Name',
+                'lastname'          => 'Last Name',
+                'role'              => 'Role',
+                'email'             => 'E-Mail',
+                'email_verified_at' => 'Verified at',
+                'verified'          => 'Verified',
+                'unverified'        => 'Unverified',
+                'created_at'        => 'Created at',
+                'updated_at'        => 'Updated at',
+                'deleted_at'        => 'Deleted at',
+            ]
         ],
         'roles'      => [
             'label'       => 'Roles & Permissions',
             'title'       => 'Roles & Permissions',
             'heading'     => 'Roles & Permissions',
             'subheading'  => '',
-            'icon'        => 'fluentui-image-shadow-24',
-            'icon_active' => 'fluentui-image-shadow-24',
+            'icon'        => 'fill.lock_clock',
+            'icon_active' => 'outline.lock_clock',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Blog
@@ -51,6 +63,24 @@ return [
             'label'       => 'Roles & Permissions',
             'title'       => 'Roles & Permissions',
             'heading'     => 'Roles & Permissions',
+            'subheading'  => '',
+            'icon'        => 'fluentui-image-shadow-24',
+            'icon_active' => 'fluentui-image-shadow-24',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Collections
+    |--------------------------------------------------------------------------
+    */
+    'collection'          => [
+        'label'       => 'Collections',
+        'icon'        => 'fluentui-image-shadow-24',
+        'icon_active' => 'fluentui-image-shadow-24',
+        'core_icon'      => [
+            'label'       => 'Icons',
+            'title'       => 'Icons',
+            'heading'     => 'Icons',
             'subheading'  => '',
             'icon'        => 'fluentui-image-shadow-24',
             'icon_active' => 'fluentui-image-shadow-24',

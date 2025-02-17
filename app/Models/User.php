@@ -55,6 +55,15 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  Ha
         return "{$this->firstname} {$this->lastname}";
     }
 
+    public function getVerifiedAttribute()
+    {
+        if ($this->email_verified_at) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function isSuperAdmin(): bool
     {
         return $this->hasRole(config('filament-shield.super_admin.name'));
