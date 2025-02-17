@@ -8,8 +8,8 @@ return [
     */
     'dashboard'       => [
         'label'       => 'Dashboard',
-        'icon'        => 'heroicon-m-home',
-        'icon_active' => 'heroicon-m-home',
+        'icon'        => 'outline.home',
+        'icon_active' => 'fill.home',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -18,8 +18,8 @@ return [
     */
     'access'          => [
         'label'       => 'Access Management',
-        'icon'        => 'fill.lock_clock',
-        'icon_active' => 'outline.lock_clock',
+        'icon'        => 'outline.lock_clock',
+        'icon_active' => 'fill.lock_clock',
         'users'      => [
             'label'       => 'Users',
             'title'       => 'Users',
@@ -67,15 +67,15 @@ return [
     */
     'collection'          => [
         'label'       => 'Collections',
-        'icon'        => 'fluentui-image-shadow-24',
-        'icon_active' => 'fluentui-image-shadow-24',
+        'icon'        => 'outline.library_books',
+        'icon_active' => 'fill.library_books',
         'core_icon'      => [
             'label'       => 'Icons',
             'title'       => 'Icons',
             'heading'     => 'Icons',
             'subheading'  => '',
-            'icon'        => 'fluentui-image-shadow-24',
-            'icon_active' => 'fluentui-image-shadow-24',
+            'icon'        => 'outline.fonticons',
+            'icon_active' => 'fill.fonticons',
         ],
     ],
     /*
