@@ -80,6 +80,24 @@ return [
     ],
     /*
     |--------------------------------------------------------------------------
+    | Contents
+    |--------------------------------------------------------------------------
+    */
+    'content'          => [
+        'label'       => 'Contents',
+        'icon'        => 'outline.deployed_code',
+        'icon_active' => 'fill.deployed_code',
+        'category'      => [
+            'label'       => 'Categories',
+            'title'       => 'Categories',
+            'heading'     => 'Categories',
+            'subheading'  => '',
+            'icon'        => 'outline.category',
+            'icon_active' => 'fill.category',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
     | Statistics
     |--------------------------------------------------------------------------
     */

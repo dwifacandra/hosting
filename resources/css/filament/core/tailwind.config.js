@@ -6,6 +6,7 @@ export default {
         './app/Filament/D:\Servers\dwifacandra\app\Filament\Clusters\Settings\**/*.php',
         './resources/views/filament/d:\-servers\dwifacandra\app\-filament\-clusters\-settings\**/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        './vendor/awcodes/filament-tiptap-editor/resources/**/*.blade.php',
     ],
     theme: {
         extend: {

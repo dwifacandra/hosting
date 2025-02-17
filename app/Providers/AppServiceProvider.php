@@ -33,7 +33,8 @@ class AppServiceProvider extends ServiceProvider
                     ->defaultPaginationPageOption(10)
                     ->paginated([10, 25, 50, 100])
                     ->extremePaginationLinks()
-                    ->defaultSort('created_at', 'desc');
+                    ->defaultSort('created_at', 'desc')
+                    ->persistSearchInSession();
             }
         );
 

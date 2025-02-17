@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Clusters\Collections\Resources\IconResource\Schemes;
+namespace App\Filament\Clusters\Contents\Resources\CategoryResource\Schemes;
 
-use App\Models\Icon;
-use App\Filament\Clusters\Collections;
+use App\Models\Category;
+use App\Filament\Clusters\Contents;
 use Illuminate\Database\Eloquent\Model;
 
 trait ResourceInfo
@@ -15,17 +15,24 @@ trait ResourceInfo
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name', 'folder', 'path'];
+        return ['name', 'scope'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Scope' => $record->scope,
+        ];
     }
 
     public static function getCluster(): ?string
     {
-        return Collections::class;
+        return Contents::class;
     }
 
     public static function getModel(): string
     {
-        return Icon::class;
+        return Category::class;
     }
 
     public static function shouldRegisterNavigation(): bool
@@ -45,16 +52,16 @@ trait ResourceInfo
 
     public static function getNavigationLabel(): string
     {
-        return __('core.collection.core_icon.label');
+        return __('core.content.category.label');
     }
 
     public static function getNavigationIcon(): string
     {
-        return __('core.collection.core_icon.icon');
+        return __('core.content.category.icon');
     }
 
     public static function getActiveNavigationIcon(): string
     {
-        return __('core.collection.core_icon.icon_active');
+        return __('core.content.category.icon_active');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Filament\Pages\Dashboard;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
-use App\Filament\Clusters\{Access, Collections, Statistic,};
+use App\Filament\Clusters\{Access, Collections, Statistic, Contents,};
 
 trait Navigations
 {
@@ -28,7 +28,13 @@ trait Navigations
                 ->label(__('core.collection.label'))
                 ->icon(__('core.collection.icon'))
                 ->items([
-                    ...self::canAccess(Collections\Resources\IconResource::getNavigationItems(), 'user'),
+                    ...self::canAccess(Collections\Resources\IconResource::getNavigationItems(), 'icon'),
+                ]),
+            NavigationGroup::make()
+                ->label(__('core.content.label'))
+                ->icon(__('core.content.icon'))
+                ->items([
+                    ...self::canAccess(Contents\Resources\CategoryResource::getNavigationItems(), 'category'),
                 ]),
             NavigationGroup::make()
                 ->label(__('core.access.label'))

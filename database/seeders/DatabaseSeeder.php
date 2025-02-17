@@ -28,14 +28,21 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]
         );
+
         Artisan::call('shield:super-admin', [
             '--user' => $user->id,
             '--panel' => 'core'
         ]);
-
         Artisan::call('shield:generate', [
             '--all' => true,
             '--panel' => 'core'
         ]);
+
+        if (config('app.env') === 'local') {
+            $this->call([
+                CategorySeeder::class,
+            ]);
+        }
+        $this->call([]);
     }
 }
