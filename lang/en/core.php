@@ -46,8 +46,8 @@ return [
             'title'       => 'Roles & Permissions',
             'heading'     => 'Roles & Permissions',
             'subheading'  => '',
-            'icon'        => 'fill.lock_clock',
-            'icon_active' => 'outline.lock_clock',
+            'icon'        => 'outline.lock_clock',
+            'icon_active' => 'fill.lock_clock',
         ],
     ],
     /*
@@ -59,14 +59,6 @@ return [
         'label'       => 'Blog',
         'icon'        => 'fluentui-image-shadow-24',
         'icon_active' => 'fluentui-image-shadow-24',
-        'roles'      => [
-            'label'       => 'Roles & Permissions',
-            'title'       => 'Roles & Permissions',
-            'heading'     => 'Roles & Permissions',
-            'subheading'  => '',
-            'icon'        => 'fluentui-image-shadow-24',
-            'icon_active' => 'fluentui-image-shadow-24',
-        ],
     ],
     /*
     |--------------------------------------------------------------------------
@@ -85,5 +77,15 @@ return [
             'icon'        => 'fluentui-image-shadow-24',
             'icon_active' => 'fluentui-image-shadow-24',
         ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Statistics
+    |--------------------------------------------------------------------------
+    */
+    'stats'          => [
+        'label'       => 'Statistics',
+        'icon'        => 'fluentui-image-shadow-24',
+        'icon_active' => 'fluentui-image-shadow-24',
     ],
 ];

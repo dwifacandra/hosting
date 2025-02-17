@@ -3,9 +3,8 @@
 namespace App\Traits;
 
 use Filament\Pages\Dashboard;
-use Firefly\FilamentBlog\Resources as FilamentBlog;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
-use App\Filament\Clusters\{Access, Collections};
+use App\Filament\Clusters\{Access, Collections, Statistic,};
 
 trait Navigations
 {
@@ -38,6 +37,10 @@ trait Navigations
                     ...self::canAccess(Access\Resources\UserResource::getNavigationItems(), 'user'),
                     ...self::canAccess(Access\Resources\RoleResource::getNavigationItems(), 'role'),
                 ]),
+            NavigationGroup::make()
+                ->label(__('core.stats.label'))
+                ->icon(__('core.stats.icon'))
+                ->items([]),
         ];
     }
 

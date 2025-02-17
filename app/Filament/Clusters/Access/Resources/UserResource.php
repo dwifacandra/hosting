@@ -3,10 +3,10 @@
 namespace App\Filament\Clusters\Access\Resources;
 
 use App\Models\User;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
 use App\Filament\Clusters\Access;
 use App\Filament\Clusters\Access\Resources\UserResource\{Pages, Schemes};
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
 
 class UserResource extends Resource
 {
