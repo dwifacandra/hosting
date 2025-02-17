@@ -21,20 +21,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Shield
-        Gate::policy(\Firefly\FilamentBlog\Models\Category::class, \App\Policies\CategoryPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\Post::class, \App\Policies\PostPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\Tag::class, \App\Policies\TagPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\SeoDetail::class, \App\Policies\SeoDetailPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\NewsLetter::class, \App\Policies\NewsLetterPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\Comment::class, \App\Policies\CommentPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\ShareSnippet::class, \App\Policies\ShareSnippetPolicy::class);
-        Gate::policy(\Firefly\FilamentBlog\Models\Setting::class, \App\Policies\SettingPolicy::class);
+        // Gate::policy(\Firefly\FilamentBlog\Models\Category::class, \App\Policies\CategoryPolicy::class);
 
         // # Table Default Config
         \Filament\Tables\Table::configureUsing(
             function (\Filament\Tables\Table $table): void {
                 $table
                     ->emptyStateHeading('No data yet')
+                    ->deferLoading()->deferFilters()
                     ->defaultPaginationPageOption(10)
                     ->paginated([10, 25, 50, 100])
                     ->extremePaginationLinks()
