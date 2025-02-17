@@ -14,9 +14,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Clusters\Access\Resources\UserResource\Pages;
+use App\Filament\Clusters\Access\Resources\UserResource\Schemes\ResourceInfo;
 
 class UserResource extends Resource
 {
+    use ResourceInfo;
+
     protected static ?string $cluster = Access::class;
     protected static ?string $model = User::class;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

@@ -20,6 +20,14 @@ return [
         'label'       => 'Access Management',
         'icon'        => 'fluentui-image-shadow-24',
         'icon_active' => 'fluentui-image-shadow-24',
+        'users'      => [
+            'label'       => 'Users',
+            'title'       => 'Users',
+            'heading'     => 'Users',
+            'subheading'  => '',
+            'icon'        => 'fluentui-image-shadow-24',
+            'icon_active' => 'fluentui-image-shadow-24',
+        ],
         'roles'      => [
             'label'       => 'Roles & Permissions',
             'title'       => 'Roles & Permissions',
