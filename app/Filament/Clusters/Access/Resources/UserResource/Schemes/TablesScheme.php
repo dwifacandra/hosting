@@ -15,6 +15,12 @@ trait TablesScheme
         DefaultOptions::getColumnConfigs();
         return $table
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('avatar')
+                    ->collection('avatar')
+                    ->visibility('private')
+                    ->circular()
+                    ->alignCenter()
+                    ->size(40),
                 Tables\Columns\TextColumn::make('username')
                     ->label(__('core.access.users.field.username'))
                     ->description(fn(Model $record) => $record->firstname . ' ' . $record->lastname),
@@ -30,7 +36,7 @@ trait TablesScheme
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 trait FormsScheme
 {
@@ -61,25 +62,31 @@ trait FormsScheme
                                     ->optionsLimit(5)
                                     ->columnSpanFull(),
                             ])
-                    ])->columnSpan([
+                    ])
+                    ->extraAttributes(['style' => 'min-height: 70vh;'])
+                    ->columnSpan([
                         'sm' => 1,
                         'lg' => 2
                     ]),
                 Forms\Components\Group::make()
                     ->schema([
-                        // SpatieMediaLibraryFileUpload::make('media')
-                        //     ->hiddenLabel()
-                        //     ->avatar()
-                        //     ->collection('avatars')
-                        //     ->alignCenter()
-                        //     ->columnSpanFull(),
+                        Forms\Components\Section::make()
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('media')
+                                    ->hiddenLabel()
+                                    ->avatar()
+                                    ->collection('avatar')
+                                    ->visibility('private')
+                                    ->alignCenter()
+                                    ->columnSpanFull(),
+                            ]),
                         // Forms\Components\Actions::make([
-                        //     Action::make('resend_verification')
+                        //     Forms\Components\Action::make('resend_verification')
                         //         ->label(__('resource.user.actions.resend_verification'))
                         //         ->color('info')
                         //         ->action(fn(MailSettings $settings, Model $record) => static::doResendEmailVerification($settings, $record)),
                         // ])
-                        //     // ->hidden(fn (User $user) => $user->email_verified_at != null)
+                        //     ->hidden(fn(User $user) => $user->email_verified_at != null)
                         //     ->hiddenOn('create')
                         //     ->fullWidth(),
                         Forms\Components\Section::make()

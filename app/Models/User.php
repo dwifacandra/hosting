@@ -2,17 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Models\Contracts\{FilamentUser, HasAvatar, HasName};
 
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  HasName
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  HasName, HasMedia, HasAvatar
 {
-    use HasRoles, HasFactory, Notifiable, SoftDeletes;
+    use InteractsWithMedia,
+        HasRoles,
+        HasFactory,
+        Notifiable,
+        SoftDeletes;
 
     protected $fillable = [
         'username',
@@ -40,10 +48,17 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  Ha
         return true;
     }
 
-    // public function getFilamentAvatarUrl(): ?string
-    // {
-    //     return $this->getMedia('avatars')?->first()?->getUrl() ?? $this->getMedia('avatars')?->first()?->getUrl('thumb') ?? null;
-    // }
+    public function getFilamentAvatarUrl(): ?string
+    {
+        $prefix = urlencode(Str::substr($this->name, 0, 2));
+        $avatar = 'https://ui-avatars.com/api/?name=' . $prefix . '&color=f8fafc&background=475569';
+        $media = $this->getFirstMedia('avatar');
+        if ($media) {
+            return $media->getTemporaryUrl(now()->addHours(24));
+        } else {
+            return $avatar;
+        }
+    }
 
     public function getFilamentName(): string
     {
@@ -67,5 +82,11 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  Ha
     public function isSuperAdmin(): bool
     {
         return $this->hasRole(config('filament-shield.super_admin.name'));
+    }
+
+    public function registerMediaCollections(Media|null $media = null): void
+    {
+        $this->addMediaCollection('avatar')
+            ->useDisk('private');
     }
 }

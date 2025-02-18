@@ -26,7 +26,7 @@ class CorePanelProvider extends PanelProvider
             ->default()->id('core')->path('core')->spa()
             ->login()->passwordReset()->emailVerification()
             ->databaseTransactions()->databaseNotifications()->databaseNotificationsPolling('30s')
-            ->sidebarCollapsibleOnDesktop()->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->sidebarCollapsibleOnDesktop()->globalSearchKeyBindings(['command+k', 'ctrl+f'])
             ->maxContentWidth(\Filament\Support\Enums\MaxWidth::Full)
             ->viteTheme('resources/css/filament/core/theme.css')->darkMode(false)
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
