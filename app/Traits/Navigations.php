@@ -5,6 +5,7 @@ namespace App\Traits;
 use Filament\Pages\Dashboard;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
 use App\Filament\Clusters\{Access, Collections, Statistic, Contents,};
+use TomatoPHP\FilamentMediaManager;
 
 trait Navigations
 {
@@ -35,6 +36,7 @@ trait Navigations
                 ->icon(__('core.content.icon'))
                 ->items([
                     ...self::canAccess(Contents\Resources\CategoryResource::getNavigationItems(), 'category'),
+                    ...self::canAccess(FilamentMediaManager\Resources\FolderResource::getNavigationItems(), 'folder'),
                 ]),
             NavigationGroup::make()
                 ->label(__('core.access.label'))

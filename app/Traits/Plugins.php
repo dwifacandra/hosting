@@ -7,6 +7,9 @@ trait Plugins
     public static function getAll(): array
     {
         return [
+            \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make()
+                ->allowSubFolders()
+                ->allowUserAccess(),
             \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
                 ->gridColumns([
                     'default' => 1,

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -13,10 +14,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Models\Contracts\{FilamentUser, HasAvatar, HasName};
+use TomatoPHP\FilamentMediaManager\Traits\InteractsWithMediaFolders;
 
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail,  HasName, HasMedia, HasAvatar
+class User extends Authenticatable implements
+    FilamentUser,
+    MustVerifyEmail,
+    HasName,
+    HasMedia,
+    HasAvatar
 {
     use InteractsWithMedia,
+        InteractsWithMediaFolders,
+        HasApiTokens,
         HasRoles,
         HasFactory,
         Notifiable,

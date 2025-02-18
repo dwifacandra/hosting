@@ -7,3 +7,7 @@ use App\Http\Controllers\ServePrivateStorage;
 Route::middleware('signed')->group(function () {
     Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
 });
+
+Route::get('/login', function () {
+    return redirect()->route('filament.core.auth.login');
+})->name('login');
