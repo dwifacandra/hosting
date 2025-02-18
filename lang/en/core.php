@@ -69,6 +69,14 @@ return [
         'label'       => 'Collections',
         'icon'        => 'outline.library_books',
         'icon_active' => 'fill.library_books',
+        'animation'       => [
+            'label'       => 'Animation',
+            'title'       => 'Animation',
+            'heading'     => 'Animation',
+            'subheading'  => '',
+            'icon'        => 'outline.motion_photos_auto',
+            'icon_active' => 'fill.motion_photos_auto',
+        ],
         'core_icon'      => [
             'label'       => 'Icons',
             'title'       => 'Icons',

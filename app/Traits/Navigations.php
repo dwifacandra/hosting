@@ -29,6 +29,7 @@ trait Navigations
                 ->label(__('core.collection.label'))
                 ->icon(__('core.collection.icon'))
                 ->items([
+                    ...self::canAccess(Collections\Resources\AnimationResource::getNavigationItems(), 'animation'),
                     ...self::canAccess(Collections\Resources\IconResource::getNavigationItems(), 'icon'),
                 ]),
             NavigationGroup::make()

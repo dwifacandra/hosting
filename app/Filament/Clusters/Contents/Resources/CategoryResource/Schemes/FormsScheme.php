@@ -16,40 +16,45 @@ trait FormsScheme
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->autocapitalize('words')
-                    ->helperText(fn($state): string => 'Slug: ' . $state)
-                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                Forms\Components\Select::make('parent_id')
-                    ->label('Parent Name')
-                    ->native(false)
-                    ->preload()
-                    ->searchable()
-                    ->options(Category::all()->pluck('name', 'id')),
-                Forms\Components\Hidden::make('slug')
-                    ->required(),
-                Forms\Components\Select::make('scope')
-                    ->required()
-                    ->native(false)
-                    ->preload()
-                    ->searchable()
-                    ->options(Category::all()->pluck('scope', 'scope')),
-                Forms\Components\Select::make('icon')
-                    ->native(false)
-                    ->preload()
-                    ->searchable()
-                    ->reactive()
-                    ->options(CoreIcon::getIcons())
-                    ->default('outline.category')
-                    ->prefixIcon(function ($state): string {
-                        return $state;
-                    }),
-                TiptapEditor::make('content')
+                Forms\Components\Section::make()
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->autocapitalize('words')
+                            ->helperText(fn($state): string => 'Slug: ' . $state)
+                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                        Forms\Components\Select::make('parent_id')
+                            ->label('Parent Name')
+                            ->native(false)
+                            ->preload()
+                            ->searchable()
+                            ->options(Category::all()->pluck('name', 'id')),
+                        Forms\Components\Hidden::make('slug')
+                            ->required(),
+                        Forms\Components\Select::make('scope')
+                            ->required()
+                            ->native(false)
+                            ->preload()
+                            ->searchable()
+                            ->options(Category::all()->pluck('scope', 'scope')),
+                        Forms\Components\Select::make('icon')
+                            ->native(false)
+                            ->preload()
+                            ->searchable()
+                            ->reactive()
+                            ->options(CoreIcon::getIcons())
+                            ->default('outline.category')
+                            ->prefixIcon(function ($state): string {
+                                return $state;
+                            }),
+                    ]),
+                TiptapEditor::make('description')
+                    ->hiddenLabel()
                     ->columnSpanFull()
-                    ->extraInputAttributes(['style' => 'min-height: 12rem;']),
+                    ->extraInputAttributes(['style' => 'min-height: 50vh;']),
             ]);
     }
 }

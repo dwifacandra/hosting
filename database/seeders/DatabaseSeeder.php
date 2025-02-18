@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         if (config('app.env') === 'local') {
             $this->call([
                 CategorySeeder::class,
+                AnimationSeeder::class,
             ]);
         }
         $this->call([]);
