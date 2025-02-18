@@ -84,7 +84,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'content'          => [
-        'label'       => 'Contents',
+        'label'       => 'Content Management',
         'icon'        => 'outline.deployed_code',
         'icon_active' => 'fill.deployed_code',
         'category'      => [

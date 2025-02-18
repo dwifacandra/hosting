@@ -49,6 +49,18 @@ html {
 }
 
 /**************************************************************************************************/
+/* APP INFO */
+.app-info {
+    @apply flex gap-4;
+}
+.app-info .app-logo {
+    @apply size-10 shrink-0;
+}
+.app-info .app-detail {
+    @apply justify-start;
+}
+
+/**************************************************************************************************/
 /* TOPBAR */
 .fi-topbar {
     @apply sticky top-0 z-20 overflow-x-clip;
