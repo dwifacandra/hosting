@@ -27,6 +27,10 @@ class CorePanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()->globalSearchKeyBindings(['command+k', 'ctrl+f'])
             ->maxContentWidth(\Filament\Support\Enums\MaxWidth::Full)
             ->viteTheme('resources/css/filament/core/theme.css')->darkMode(false)
+            ->colors([
+                'primary' => '#E6130C',
+                'secondary' => '#292929',
+            ])
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
