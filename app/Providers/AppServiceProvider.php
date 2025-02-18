@@ -21,7 +21,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Shield
-        // Gate::policy(\Firefly\FilamentBlog\Models\Category::class, \App\Policies\CategoryPolicy::class);
+        Gate::policy(\TomatoPHP\FilamentMediaManager\Models\Folder::class, \App\Policies\FolderPolicy::class);
+        Gate::policy(\TomatoPHP\FilamentMediaManager\Models\Media::class, \App\Policies\MediaPolicy::class);
 
         // # Table Default Config
         \Filament\Tables\Table::configureUsing(
