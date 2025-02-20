@@ -7,7 +7,9 @@ return [
     |--------------------------------------------------------------------------
     */
     'about' => [
-        'whoami' => 'I am an experienced Fullstack Web Developer specializing in web application development. With expertise in both front-end and back-end, I am committed to creating efficient digital solutions that provide a satisfying user experience. I always strive to deliver high-quality results that meet user needs.',
+        'whoami' => 'Saya adalah Fullstack Web Developer berpengalaman dalam pengembangan Aplikasi Web.
+        Saya berkomitmen untuk menciptakan solusi digital yang efisien dan memberikan pengalaman pengguna yang memuaskan.
+        Saya selalu berusaha untuk menghadirkan hasil yang berkualitas dan relevan dengan kebutuhan pengguna.',
     ],
     /*
     |--------------------------------------------------------------------------

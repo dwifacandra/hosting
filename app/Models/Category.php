@@ -33,4 +33,9 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
 }

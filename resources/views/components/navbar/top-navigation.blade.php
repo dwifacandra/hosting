@@ -44,7 +44,7 @@
             <div class="flex flex-col-reverse justify-between gap-4 md:items-center md:flex-row">
                 <div
                     class="flex flex-col gap-2 text-sm font-semibold md:text-xs md:items-center md:flex-row md:justify-center md:px-4">
-                    <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">About</a>
+                    <a href="{{ route('about.whoami') }}" class="core-b-secondary">About</a>
                     <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Blog</a>
                     <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Collections</a>
                 </div>

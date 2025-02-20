@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\{Route, Response};
 use App\Http\Controllers\ServePrivateStorage;
 use App\Screens\Pages\{
     LandingPage,
-    Collection
+    Collection,
+    About,
 };
 
 Route::middleware('signed')->group(function () {
     Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
 });
 
-// Fallback Resource
+// Get SVG
 Route::get('/svg/{svgname}', function ($svgname) {
     $svgPath = resource_path('svg/' . str_replace('.', '/', $svgname) . '.svg');
     if (!file_exists($svgPath)) {
@@ -23,12 +24,23 @@ Route::get('/svg/{svgname}', function ($svgname) {
     ]);
 })->name('svg');
 
+// Login Route
 Route::get('/login', function () {
     return redirect()->route('filament.core.auth.login');
 })->name('login');
 
+// Landing Page
 Route::get('/', LandingPage::class)->name('landing-page');
 
+// About
+Route::prefix('about')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('about.whoami');
+    })->name('about');
+    Route::get('/whoami', About\WhoAmI::class)->name('about.whoami');
+});
+
+// Collection
 Route::prefix('collection')->group(function () {
     Route::get('/', function () {
         return redirect()->route('landing-page');
