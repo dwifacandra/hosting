@@ -2,9 +2,7 @@
 
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
-use Filament\Forms;
 use Filament\Tables;
-use App\Models\Category;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use App\Traits\DefaultOptions;
@@ -28,13 +26,35 @@ trait TablesScheme
                     ->badge()
                     ->prefix('@'),
                 Tables\Columns\TextColumn::make('status')
-                    ->badge(),
+                    ->badge()
+                    ->alignCenter(),
+                Tables\Columns\TextColumn::make('views')
+                    ->badge()
+                    ->color('secondary')
+                    ->alignCenter()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('likes')
+                    ->badge()
+                    ->color('secondary')
+                    ->alignCenter()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('dislikes')
+                    ->badge()
+                    ->color('secondary')
+                    ->alignCenter()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('shares')
+                    ->badge()
+                    ->color('secondary')
+                    ->alignCenter()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('category.name')
                     ->color('info')
                     ->badge(),
                 Tables\Columns\SpatieTagsColumn::make('tags')
                     ->color('info')
-                    ->type('animation'),
+                    ->type('animation')
+                    ->searchable(false),
                 Tables\Columns\TextColumn::make('source')
                     ->color('secondary')
                     ->badge(),
@@ -50,15 +70,19 @@ trait TablesScheme
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }

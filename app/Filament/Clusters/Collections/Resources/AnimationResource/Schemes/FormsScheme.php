@@ -3,11 +3,14 @@
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
 use Filament\Forms;
+use Filament\Forms\Get;
 use Filament\Forms\Set;
 use App\Models\Category;
 use Filament\Forms\Form;
 use App\Enums\PostStatus;
+use App\Enums\SourceType;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -19,7 +22,7 @@ trait FormsScheme
             ->schema([
                 Forms\Components\Split::make([
                     Forms\Components\Section::make('General')
-                        ->extraAttributes(['style' => 'min-height: 50vh;'])
+                        ->extraAttributes(['style' => 'min-height: 70vh;'])
                         ->schema([
                             Forms\Components\Hidden::make('author_id')
                                 ->default(Auth()->user()->id),
@@ -49,27 +52,55 @@ trait FormsScheme
                                 ->type('animation')
                         ]),
                     Forms\Components\Section::make('Sources')
-                        ->extraAttributes(['style' => 'min-height: 50vh;'])
+                        ->extraAttributes(['style' => 'min-height: 70vh;'])
                         ->schema([
-                            Forms\Components\TextInput::make('source')
+                            Forms\Components\Select::make('source')
                                 ->required()
-                                ->maxLength(255),
+                                ->reactive()
+                                ->native(false)
+                                ->default(SourceType::YOUTUBE->value)
+                                ->options(SourceType::class),
                             Forms\Components\TextInput::make('source_url')
+                                ->label('Source Url')
                                 ->maxLength(255)
-                                ->default(null),
+                                ->default(null)
+                                ->required(fn(Get $get): bool => $get('source') === SourceType::YOUTUBE->value)
+                                ->hidden(fn(Get $get): bool => $get('source') === SourceType::LOCAL->value)
+                                ->prefix('https://www.youtube.com/watch?v='),
+                            Forms\Components\SpatieMediaLibraryFileUpload::make('attachment')
+                                ->required(fn(Get $get): bool => $get('source') === SourceType::LOCAL->value)
+                                ->hidden(fn(Get $get): bool => $get('source') === SourceType::YOUTUBE->value)
+                                ->disk('private')->visibility('private')
+                                ->collection('collections')
+                                ->customProperties(['scope' => 'attachment'])
+                                ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'attachment'))
+                                ->acceptedFileTypes(['video/mp4'])
+                                ->openable()
+                                ->downloadable()
+                                ->columnSpanFull(),
                         ]),
                     Forms\Components\Section::make('Additional')
-                        ->extraAttributes(['style' => 'min-height: 50vh;'])
+                        ->extraAttributes(['style' => 'min-height: 70vh;'])
                         ->schema([
                             Forms\Components\Select::make('status')
                                 ->required()
                                 ->reactive()
                                 ->native(false)
-                                ->options(PostStatus::class)
                                 ->default(PostStatus::DRAFT->value)
+                                ->options(PostStatus::class)
                                 ->prefixIcon(function ($state): string {
                                     return PostStatus::from($state)->getIcon();
                                 }),
+                            Forms\Components\SpatieMediaLibraryFileUpload::make('cover')
+                                ->required()
+                                ->disk('public')->visibility('public')
+                                ->collection('collections')
+                                ->customProperties(['scope' => 'cover'])
+                                ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
+                                ->image()
+                                ->openable()
+                                ->downloadable()
+                                ->columnSpanFull(),
                         ]),
                 ])->columnSpanFull()->from('md'),
                 TiptapEditor::make('description')

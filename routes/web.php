@@ -1,13 +1,43 @@
 <?php
 
-use App\Livewire\Pages\LandingPage;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{Route, Response};
 use App\Http\Controllers\ServePrivateStorage;
+use App\Http\Middleware\SetLocale;
+use App\Screens\Pages\{
+    LandingPage,
+    Animation
+};
 
 Route::middleware('signed')->group(function () {
     Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
 });
 
+// Fallback Resource
+Route::get('/svg/{svgname}', function ($svgname) {
+    $svgPath = resource_path('svg/' . str_replace('.', '/', $svgname) . '.svg');
+    if (!file_exists($svgPath)) {
+        abort(404, 'SVG file not found.');
+    }
+    $svgContent = file_get_contents($svgPath);
+    return Response::make($svgContent, 200, [
+        'Content-Type' => 'image/svg+xml',
+    ]);
+})->name('svg');
+
 Route::get('/login', function () {
     return redirect()->route('filament.core.auth.login');
 })->name('login');
+
+Route::middleware([SetLocale::class])->group(function () {
+    Route::get('/', LandingPage::class)->name('landing-page');
+
+    Route::prefix('collection')->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('landing-page');
+        })->name('collection');
+
+        Route::prefix('animation')->group(function () {
+            Route::get('/{category}/{slug}', Animation\Detail::class)->name('animation.detail');
+        });
+    });
+});

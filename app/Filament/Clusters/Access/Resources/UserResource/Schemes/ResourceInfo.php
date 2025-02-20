@@ -2,7 +2,9 @@
 
 namespace App\Filament\Clusters\Access\Resources\UserResource\Schemes;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Filament\Clusters\Access;
+use App\Models\User;
+use Illuminate\Database\Eloquent\{Model, Builder, SoftDeletingScope};
 
 trait ResourceInfo
 {
@@ -21,6 +23,24 @@ trait ResourceInfo
         return [
             'name' => $record->firstname . ' ' . $record->lastname,
         ];
+    }
+
+    public static function getCluster(): ?string
+    {
+        return Access::class;
+    }
+
+    public static function getModel(): string
+    {
+        return User::class;
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function getSubNavigationPosition(): \Filament\Pages\SubNavigationPosition

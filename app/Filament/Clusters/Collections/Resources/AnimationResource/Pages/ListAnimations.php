@@ -35,10 +35,7 @@ class ListAnimations extends ListRecords
             $tabs[$scope->status->getLabel()] =
                 Tab::make()
                 ->icon($scope->status->getIcon())
-                ->badge(
-                    Animation::where('status', $scope->status)
-                        ->count()
-                )
+                ->badge(Animation::countByStatus($scope->status))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('status', $scope->status));
         }
 
@@ -46,21 +43,14 @@ class ListAnimations extends ListRecords
             $tabs[$scope->source] =
                 Tab::make()
                 ->badgeColor('secondary')
-                ->badge(
-                    Animation::where('source', $scope->source)
-                        ->count()
-                )
+                ->badge(Animation::countBySource($scope->source))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('source', $scope->source));
         }
 
         foreach ($scopes as $scope) {
             $tabs[$scope->category->name] = Tab::make()
                 ->badgeColor('secondary')
-                ->badge(
-                    Animation::whereHas('category', function ($query) use ($scope) {
-                        $query->where('name', $scope->category->name);
-                    })->count()
-                )
+                ->badge(Animation::countByCategory($scope->category->name))
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('category', function ($query) use ($scope) {
                     $query->where('name', $scope->category->name);
                 }));

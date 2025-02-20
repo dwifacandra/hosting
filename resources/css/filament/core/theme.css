@@ -384,7 +384,7 @@ html {
 /**************************************************************************************************/
 /* TABS */
 .fi-tabs {
-    @apply px-0 py-0 w-full overflow-x-auto bg-white shadow-none gap-x-0 m-0 rounded-none ring-1 ring-gray-200;
+    @apply px-0 py-0 w-full overflow-x-auto scrollbar-hide bg-white shadow-none gap-x-0 m-0 rounded-none ring-1 ring-gray-200;
 }
 .fi-tabs .fi-tabs-item {
     @apply flex items-center justify-center
@@ -581,7 +581,7 @@ html {
     .fi-dropdown-panel
     .fi-dropdown-list
     .fi-dropdown-list-item {
-    @apply flex items-center w-full gap-1 px-2 py-1 justify-between text-sm transition-colors duration-75 rounded-none outline-none whitespace-nowrap disabled:pointer-events-none disabled:opacity-70;
+    @apply flex items-center w-full gap-1 px-2 py-2 justify-between text-sm transition-colors duration-75 rounded-none outline-none whitespace-nowrap disabled:pointer-events-none disabled:opacity-70;
 }
 .fi-ta
     .fi-ta-actions
@@ -700,7 +700,7 @@ html {
     .fi-ta-col-wrp
     .fi-ta-text
     > div {
-    @apply flex gap-0.5 flex-wrap text-left justify-start;
+    @apply flex gap-0.5 flex-wrap text-left;
 }
 .fi-ta
     .fi-ta-content

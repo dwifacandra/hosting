@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Spatie\Tags\HasTags;
 use App\Enums\PostStatus;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Tags\HasTags;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 
-class Animation extends Model
+class Animation extends Model implements HasMedia
 {
-    use HasFactory, HasTags, SoftDeletes;
+    use HasFactory, HasTags, SoftDeletes, InteractsWithMedia;
 
     protected $fillable = [
         'title',
@@ -26,6 +27,42 @@ class Animation extends Model
     protected $casts = [
         'status' => PostStatus::class,
     ];
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('collections')
+            ->useFallbackUrl('/svg/color.no_image');
+    }
+
+    public function scopeCountByCategory($query, $categoryName)
+    {
+        return $query->whereHas('category', function ($query) use ($categoryName) {
+            $query->where('name', $categoryName);
+        })->count();
+    }
+
+    public function scopeCountBySource($query, $source)
+    {
+        return $query->where('source', $source)->count();
+    }
+
+    public function scopeCountByStatus($query, $status)
+    {
+        return $query->where('status', $status->value)->count();
+    }
+
+    public function scopeRelated($query, $category = null)
+    {
+        $query = $query
+            ->with(['category', 'author'])
+            ->orderBy('views', 'desc');
+
+        if ($category) {
+            return $query->where('category_id', $category);
+        }
+
+        return $query;
+    }
 
     public function category()
     {

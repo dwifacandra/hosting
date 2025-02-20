@@ -16,7 +16,6 @@ class EditAnimation extends EditRecord
     protected function getHeaderActions(): array
     {
         $actions = [
-            Actions\ViewAction::make(),
             Actions\DeleteAction::make(),
             Actions\ForceDeleteAction::make(),
             Actions\RestoreAction::make(),

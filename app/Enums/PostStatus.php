@@ -8,6 +8,7 @@ enum PostStatus: string implements HasLabel, HasIcon, HasColor
 {
     case DRAFT = 'draft';
     case PUBLISH = 'publish';
+
     public function getLabel(): string
     {
         return match ($this) {
@@ -15,6 +16,7 @@ enum PostStatus: string implements HasLabel, HasIcon, HasColor
             self::PUBLISH => 'Publish',
         };
     }
+
     public function getColor(): string
     {
         return match ($this) {
@@ -22,6 +24,7 @@ enum PostStatus: string implements HasLabel, HasIcon, HasColor
             self::PUBLISH => 'success',
         };
     }
+
     public function getIcon(): string
     {
         return match ($this) {

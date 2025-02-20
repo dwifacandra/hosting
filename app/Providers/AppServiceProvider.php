@@ -12,7 +12,31 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // # Hooks
+        \Filament\Tables\Table::$defaultDateDisplayFormat = 'd/m/o';
+        \Filament\Tables\Table::$defaultDateTimeDisplayFormat = 'd/m/o H:i';
+        \Filament\Support\Facades\FilamentIcon::register([
+            'panels::sidebar.expand-button' => 'color.d_logo',
+        ]);
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::FOOTER,
+            fn(): \Illuminate\Contracts\View\View => view('filament.components.panel-footer'),
+        );
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::USER_MENU_BEFORE,
+            fn(): \Illuminate\Contracts\View\View => view('filament.components.button-website'),
+        );
+        \BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch::configureUsing(
+            function (\BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch $switch) {
+                $switch
+                    ->locales(['en', 'id'])
+                    ->renderHook('panels::user-menu.before')
+                    ->flags([
+                        'en' => asset('img/flags/en.svg'),
+                        'id' => asset('img/flags/id.svg'),
+                    ]);
+            }
+        );
     }
 
     /**
@@ -36,30 +60,6 @@ class AppServiceProvider extends ServiceProvider
                     ->extremePaginationLinks()
                     ->defaultSort('created_at', 'desc')
                     ->persistSearchInSession();
-            }
-        );
-
-        // # Hooks
-        \Filament\Support\Facades\FilamentIcon::register([
-            'panels::sidebar.expand-button' => 'color.d_logo',
-        ]);
-        \Filament\Support\Facades\FilamentView::registerRenderHook(
-            \Filament\View\PanelsRenderHook::FOOTER,
-            fn(): \Illuminate\Contracts\View\View => view('filament.components.panel-footer'),
-        );
-        \Filament\Support\Facades\FilamentView::registerRenderHook(
-            \Filament\View\PanelsRenderHook::USER_MENU_BEFORE,
-            fn(): \Illuminate\Contracts\View\View => view('filament.components.button-website'),
-        );
-        \BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch::configureUsing(
-            function (\BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch $switch) {
-                $switch
-                    ->locales(['en', 'id'])
-                    ->renderHook('panels::user-menu.before')
-                    ->flags([
-                        'en' => asset('img/flags/en.svg'),
-                        'id' => asset('img/flags/id.svg'),
-                    ]);
             }
         );
     }

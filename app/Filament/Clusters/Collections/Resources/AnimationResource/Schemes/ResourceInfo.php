@@ -2,9 +2,9 @@
 
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
-use App\Filament\Clusters\Collections;
 use App\Models\Animation;
-use Illuminate\Database\Eloquent\Model;
+use App\Filament\Clusters\Collections;
+use Illuminate\Database\Eloquent\{Model, Builder, SoftDeletingScope};
 
 trait ResourceInfo
 {
@@ -18,6 +18,11 @@ trait ResourceInfo
         return ['title', 'description'];
     }
 
+    public static function getGlobalSearchResultsLimit(): int
+    {
+        return 10;
+    }
+
     public static function getCluster(): ?string
     {
         return Collections::class;
@@ -26,6 +31,14 @@ trait ResourceInfo
     public static function getModel(): string
     {
         return Animation::class;
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function shouldRegisterNavigation(): bool

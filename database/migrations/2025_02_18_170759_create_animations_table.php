@@ -17,12 +17,16 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('status');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('author_id');
             $table->string('source');
             $table->string('source_url')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('author_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('views')->default(0);
+            $table->integer('likes')->default(0);
+            $table->integer('dislikes')->default(0);
+            $table->integer('shares')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

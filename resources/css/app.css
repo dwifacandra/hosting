@@ -1,3 +1,142 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    @apply scroll-smooth border-secondary-200 dark:border-secondary-900;
+    &::-webkit-scrollbar {
+        @apply w-2;
+    }
+    &::-webkit-scrollbar-track {
+        @apply bg-secondary-200;
+    }
+    &::-webkit-scrollbar-thumb {
+        @apply bg-secondary-500;
+    }
+}
+
+/* Theme */
+html {
+    font-size: 14px;
+}
+.light {
+    @apply bg-secondary-50 text-secondary-950;
+}
+.dark {
+    @apply bg-secondary-900 text-secondary-50;
+}
+
+/* Core Styles */
+.core-icon path {
+    @apply fill-current transform-gpu;
+}
+.core-divider {
+    @apply py-8;
+}
+
+/* Core Background Gradient */
+.core-bg-gradient {
+    @apply bg-gradient-to-r from-slate-950 via-slate-800 to-slate-950;
+}
+.core-bg-gradient-2 {
+    @apply bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%;
+}
+.core-bg-gradient-3 {
+    @apply bg-gradient-to-br from-blue-800 via-violet-600 to-indigo-900;
+}
+.core-bg-gradient-4 {
+    @apply bg-gradient-to-bl from-red-600 via-red-700 to-red-800;
+}
+
+/* Core Background Clip Gradient */
+.core-bg-clip {
+    @apply text-transparent bg-clip-text core-bg-gradient;
+}
+.core-bg-clip-2 {
+    @apply text-transparent bg-clip-text core-bg-gradient-2;
+}
+.core-bg-clip-3 {
+    @apply text-transparent bg-clip-text core-bg-gradient-3;
+}
+.core-bg-clip-4 {
+    @apply text-transparent bg-clip-text core-bg-gradient-4;
+}
+
+/* Background Image */
+.core-bg-grid {
+    @apply bg-repeat bg-contain;
+    background-image: url("/img/grid.svg");
+}
+.core-bg-grid-2 {
+    @apply bg-repeat bg-fixed;
+    background-image: url("/img/grid.svg");
+}
+.core-bg-grid-3 {
+    @apply bg-repeat bg-fixed;
+    background-image: url("/img/grid-2.svg");
+}
+.dark .core-bg-grid,
+.dark .core-bg-grid-2 {
+    background-image: url("/img/grid-dark.svg");
+}
+/* Border */
+.core-b-secondary {
+    @apply hover:border-b-2 border-secondary-500 dark:border-secondary-200;
+}
+
+/* Page */
+.page-title {
+    @apply px-4 font-semibold w-fit select-none cursor-default;
+}
+.page-title-primary {
+    @apply page-title text-white bg-primary;
+}
+.page-title-secondary {
+    @apply page-title text-white bg-neutral-900;
+}
+.page-subtitle {
+    @apply font-semibold uppercase w-fit;
+}
+.page-subtitle-primary {
+    @apply page-subtitle text-primary;
+}
+.page-subtitle-secondary {
+    @apply page-subtitle text-secondary-950 dark:text-secondary-50;
+}
+
+/* Jumbotron */
+.jumbotron {
+    @apply select-none
+    core-bg-grid
+    bg-secondary-100 dark:bg-transparent;
+}
+.jumbotron .content {
+    @apply mx-auto px-12 md:px-16
+    flex flex-col
+    justify-center
+    h-screen max-w-screen-xl;
+}
+.jumbotron-personal .whois {
+    @apply flex-shrink w-fit
+    text-lg
+    text-neutral-950 dark:text-neutral-50;
+}
+.jumbotron-personal .whoami {
+    @apply py-4
+    font-extrabold
+    text-4xl md:text-8xl
+    text-neutral-900 dark:text-neutral-100;
+}
+.jumbotron-personal .skill {
+    @apply w-full h-fit
+    text-2xl md:text-6xl
+    font-bold
+    text-primary;
+}
+.jumbotron-personal .btn {
+    @apply px-5 py-1 mt-4
+    w-fit gap-x-2
+    text-base font-medium text-center text-white
+    bg-primary shadow-sm
+    inline-flex items-center justify-center;
+}

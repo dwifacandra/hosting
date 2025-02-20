@@ -2,8 +2,8 @@
 
 namespace App\Filament\Clusters\Collections\Resources;
 
-use App\Filament\Clusters\Collections\Resources\AnimationResource\{Pages, Schemes};
 use Filament\Resources\Resource;
+use App\Filament\Clusters\Collections\Resources\AnimationResource\{Pages, Schemes};
 
 class AnimationResource extends Resource
 {
@@ -16,7 +16,6 @@ class AnimationResource extends Resource
         return [
             'index' => Pages\ListAnimations::route('/'),
             'create' => Pages\CreateAnimation::route('/create'),
-            'view' => Pages\ViewAnimation::route('/{record}'),
             'edit' => Pages\EditAnimation::route('/{record}/edit'),
         ];
     }

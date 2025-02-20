@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
     {
         $faker = Faker::create();
         $scopes = ['post', 'animation', 'design'];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $title = Str::trim($faker->sentence(2), '.');
             Category::create([
                 'name' => $title,
