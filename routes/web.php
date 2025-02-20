@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\{Route, Response};
 use App\Http\Controllers\ServePrivateStorage;
-use App\Http\Middleware\SetLocale;
 use App\Screens\Pages\{
     LandingPage,
-    Animation
+    Collection
 };
 
 Route::middleware('signed')->group(function () {
@@ -28,16 +27,11 @@ Route::get('/login', function () {
     return redirect()->route('filament.core.auth.login');
 })->name('login');
 
-Route::middleware([SetLocale::class])->group(function () {
-    Route::get('/', LandingPage::class)->name('landing-page');
+Route::get('/', LandingPage::class)->name('landing-page');
 
-    Route::prefix('collection')->group(function () {
-        Route::get('/', function () {
-            return redirect()->route('landing-page');
-        })->name('collection');
-
-        Route::prefix('animation')->group(function () {
-            Route::get('/{category}/{slug}', Animation\Detail::class)->name('animation.detail');
-        });
-    });
+Route::prefix('collection')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('landing-page');
+    })->name('collection');
+    Route::get('/{scope}/{category}/{slug}', Collection\Detail::class)->name('collection.detail');
 });

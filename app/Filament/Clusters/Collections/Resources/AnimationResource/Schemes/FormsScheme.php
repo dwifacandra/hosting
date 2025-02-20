@@ -2,17 +2,10 @@
 
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
-use Filament\Forms;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
 use App\Models\Category;
-use Filament\Forms\Form;
-use App\Enums\PostStatus;
-use App\Enums\SourceType;
-use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
-use FilamentTiptapEditor\TiptapEditor;
-use Illuminate\Database\Eloquent\Builder;
+use App\Enums\{PostScope, PostStatus, SourceType};
+use Filament\{Forms, Forms\Form, Forms\Get, Forms\Set};
+use Illuminate\{Database\Eloquent\Builder, Support\Str, Support\Collection};
 
 trait FormsScheme
 {
@@ -24,6 +17,8 @@ trait FormsScheme
                     Forms\Components\Section::make('General')
                         ->extraAttributes(['style' => 'min-height: 70vh;'])
                         ->schema([
+                            Forms\Components\Hidden::make('scope')
+                                ->default(PostScope::ANIMATION),
                             Forms\Components\Hidden::make('author_id')
                                 ->default(Auth()->user()->id),
                             Forms\Components\Hidden::make('slug')
@@ -33,7 +28,7 @@ trait FormsScheme
                                 ->maxLength(255)
                                 ->live(onBlur: true)
                                 ->autocapitalize('words')
-                                ->helperText(fn($state): string => 'Slug: ' . $state)
+                                ->helperText(fn($state): string => 'Slug: ' . Str::slug($state))
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                             Forms\Components\Select::make('category_id')
                                 ->required()
@@ -42,14 +37,14 @@ trait FormsScheme
                                 ->relationship(
                                     name: 'category',
                                     titleAttribute: 'name',
-                                    modifyQueryUsing: fn(Builder $query) => $query->where('scope', 'animation'),
+                                    modifyQueryUsing: fn(Builder $query) => $query->where('scope', PostScope::ANIMATION),
                                 )
                                 ->prefixIcon(function ($state): string {
                                     $category = Category::find($state);
                                     return $category ? $category->icon : '';
                                 }),
                             Forms\Components\SpatieTagsInput::make('tags')
-                                ->type('animation')
+                                ->type(PostScope::ANIMATION->value)
                         ]),
                     Forms\Components\Section::make('Sources')
                         ->extraAttributes(['style' => 'min-height: 70vh;'])
@@ -103,7 +98,7 @@ trait FormsScheme
                                 ->columnSpanFull(),
                         ]),
                 ])->columnSpanFull()->from('md'),
-                TiptapEditor::make('description')
+                \FilamentTiptapEditor\TiptapEditor::make('content')
                     ->hiddenLabel()
                     ->columnSpanFull()
                     ->extraInputAttributes(['style' => 'min-height: 50vh;']),

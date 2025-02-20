@@ -2,11 +2,9 @@
 
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use App\Traits\DefaultOptions;
-use Illuminate\Database\Eloquent\Builder;
+use App\{Enums\PostScope, Traits\DefaultOptions};
+use Filament\{Tables, Tables\Table};
+use Illuminate\{Database\Eloquent\Builder, Support\Str};
 
 trait TablesScheme
 {
@@ -14,11 +12,14 @@ trait TablesScheme
     {
         DefaultOptions::getColumnConfigs();
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->inScope(PostScope::ANIMATION);
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->description(
                         fn($record) => Str::limit(strip_tags(
-                            $record->description
+                            $record->content
                         ), 50)
                     ),
                 Tables\Columns\TextColumn::make('author.username')

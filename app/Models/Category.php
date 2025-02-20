@@ -29,8 +29,8 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function animations()
+    public function posts()
     {
-        return $this->hasMany(Animation::class);
+        return $this->hasMany(Post::class);
     }
 }

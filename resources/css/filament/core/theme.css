@@ -332,7 +332,7 @@ html {
     @apply hidden;
 }
 .fi-page .fi-header > div + div {
-    @apply gap-0 m-0 justify-end items-center px-2;
+    @apply gap-0 m-0 justify-end items-center ps-2;
 }
 .fi-page .fi-header > div + div .fi-ac {
     @apply flex flex-wrap items-center justify-start gap-2;
@@ -340,11 +340,21 @@ html {
 .fi-page .fi-header > div + div .fi-ac .fi-ac-action {
     @apply font-semibold rounded-none gap-2 px-2 py-1 text-sm inline-grid shadow-none;
 }
+.fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-icon path {
+    @apply fill-current;
+}
 .fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-icon {
-    @apply size-4;
+    @apply size-4 shrink-0;
 }
 .fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-label {
     @apply hidden md:block;
+}
+.fi-page .fi-header > div + div .fi-ac [title="Previous"],
+.fi-page .fi-header > div + div .fi-ac [title="Next"] {
+    @apply bg-white border-secondary-200 border size-6 md:size-[1.85rem] m-0 hover:bg-white/50 place-content-center;
+}
+.fi-page .fi-header > div + div .fi-ac [title="Next"] {
+    @apply -ms-2 border-s-0;
 }
 
 /**************************************************************************************************/

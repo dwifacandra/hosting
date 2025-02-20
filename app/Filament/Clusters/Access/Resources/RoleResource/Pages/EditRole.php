@@ -20,7 +20,15 @@ class EditRole extends EditRecord
     {
         return [
             Actions\DeleteAction::make()
-                ->hidden(fn(Model $record) => $record->name == config('filament-shield.super_admin.name')),
+                ->hidden(fn(Model $record) => $record->name == config('filament-shield.super_admin.name'))
+                ->icon('fill.delete')
+                ->color('danger')
+                ->keyBindings(['ctrl+del']),
+            Actions\CreateAction::make()
+                ->icon('fill.add_circle')
+                ->color('success')
+                ->keyBindings(['ctrl+alt+n'])
+                ->url(fn(): string => static::$resource::getNavigationUrl() . '/create'),
         ];
     }
 

@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $scopes = ['post', 'animation', 'design'];
+        $scopes = ['photograph', 'post', 'animation', 'video', 'design', 'skill'];
         for ($i = 0; $i < 25; $i++) {
             $title = Str::trim($faker->sentence(2), '.');
             Category::create([

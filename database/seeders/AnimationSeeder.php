@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Enums\SourceType;
-use App\Models\Animation;
+use App\Models\{Post, Category};
+use App\Enums\{PostStatus, PostScope, SourceType};
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class AnimationSeeder extends Seeder
 {
@@ -21,13 +19,14 @@ class AnimationSeeder extends Seeder
 
         for ($i = 0; $i < 25; $i++) {
             $title = Str::trim($faker->sentence(6), '.');
-            $category = Category::where('scope', 'animation')->pluck('id')->toArray();
+            $category = Category::where('scope', PostScope::ANIMATION)->pluck('id')->toArray();
 
-            $animation = Animation::create([
+            $animation = Post::create([
                 'title' => $title,
                 'slug' => Str::slug($title),
-                'status' => $faker->randomElement(['publish', 'draft']),
-                'description' => $faker->paragraph(),
+                'scope' => PostScope::ANIMATION,
+                'status' => $faker->randomElement(PostStatus::cases())->value,
+                'content' => $faker->paragraph(),
                 'category_id' => $faker->randomElement($category),
                 'author_id' => 1,
                 'source' => SourceType::YOUTUBE,

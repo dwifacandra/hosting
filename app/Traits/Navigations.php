@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Filament\Pages\Dashboard;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
-use App\Filament\Clusters\{Access, Collections, Statistic, Contents,};
+use App\Filament\Clusters\{Access, Collections, Statistic, Contents, Resumes};
 use TomatoPHP\FilamentMediaManager;
 
 trait Navigations
@@ -30,6 +30,7 @@ trait Navigations
                 ->icon(__('core.collection.icon'))
                 ->items([
                     ...self::canAccess(Collections\Resources\AnimationResource::getNavigationItems(), 'animation'),
+                    ...self::canAccess(Collections\Resources\PhotographResource::getNavigationItems(), 'photograph'),
                     ...self::canAccess(Collections\Resources\IconResource::getNavigationItems(), 'icon'),
                 ]),
             NavigationGroup::make()
@@ -38,6 +39,14 @@ trait Navigations
                 ->items([
                     ...self::canAccess(Contents\Resources\CategoryResource::getNavigationItems(), 'category'),
                     ...self::canAccess(FilamentMediaManager\Resources\FolderResource::getNavigationItems(), 'folder'),
+                ]),
+            NavigationGroup::make()
+                ->label(__('core.resume.label'))
+                ->icon(__('core.resume.icon'))
+                ->items([
+                    ...self::canAccess(Resumes\Resources\CompanyResource::getNavigationItems(), 'company'),
+                    ...self::canAccess(Resumes\Resources\ExperienceResource::getNavigationItems(), 'experience'),
+                    ...self::canAccess(Resumes\Resources\SkillResource::getNavigationItems(), 'skill'),
                 ]),
             NavigationGroup::make()
                 ->label(__('core.access.label'))

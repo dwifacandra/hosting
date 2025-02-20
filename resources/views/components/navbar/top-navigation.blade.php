@@ -46,7 +46,7 @@
                     class="flex flex-col gap-2 text-sm font-semibold md:text-xs md:items-center md:flex-row md:justify-center md:px-4">
                     <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">About</a>
                     <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Blog</a>
-                    <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Products</a>
+                    <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Collections</a>
                 </div>
                 <div class="flex flex-row items-center md:justify-center gap-x-1">
                     @if (Auth::check())

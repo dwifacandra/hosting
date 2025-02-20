@@ -2,6 +2,7 @@
 
 namespace App\Filament\Clusters\Contents\Resources\CategoryResource\Schemes;
 
+use App\Enums\PostScope;
 use Filament\Forms;
 use Filament\Forms\Set;
 use App\Models\Category;
@@ -39,7 +40,7 @@ trait FormsScheme
                             ->native(false)
                             ->preload()
                             ->searchable()
-                            ->options(Category::all()->pluck('scope', 'scope')),
+                            ->options(PostScope::class),
                         Forms\Components\Select::make('icon')
                             ->native(false)
                             ->preload()

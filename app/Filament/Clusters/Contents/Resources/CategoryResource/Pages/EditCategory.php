@@ -16,12 +16,19 @@ class EditCategory extends EditRecord
     protected function getHeaderActions(): array
     {
         $actions = [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->icon('fill.delete')
+                ->color('danger')
+                ->keyBindings(['ctrl+del']),
             Actions\ForceDeleteAction::make(),
             Actions\RestoreAction::make(),
+            Actions\CreateAction::make()
+                ->icon('fill.add_circle')
+                ->color('success')
+                ->keyBindings(['ctrl+alt+n'])
+                ->url(fn(): string => static::$resource::getNavigationUrl() . '/create'),
         ];
 
-        return array_merge($this->getNavigationActions(), $actions);
+        return array_merge($actions, $this->getNavigationActions());
     }
 }

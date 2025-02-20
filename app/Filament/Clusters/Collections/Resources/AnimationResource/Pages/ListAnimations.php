@@ -3,12 +3,13 @@
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Pages;
 
 use Filament\Actions;
-use App\Models\Animation;
+use App\Enums\PostScope;
+use App\Models\Post;
 use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Clusters\Collections\Resources\AnimationResource;
 use JoseEspinal\RecordNavigation\Traits\HasRecordsList;
+use App\Filament\Clusters\Collections\Resources\AnimationResource;
 
 class ListAnimations extends ListRecords
 {
@@ -19,23 +20,26 @@ class ListAnimations extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->icon('fill.add_circle')
+                ->color('success')
+                ->keyBindings(['ctrl+alt+n']),
         ];
     }
 
     public function getTabs(): array
     {
-        $scopes = Animation::get();
+        $scopes = Post::inScope(PostScope::ANIMATION)->get();
 
         $tabs = [
-            null => Tab::make('All')->badge(Animation::count()),
+            null => Tab::make('All')->badge($scopes->count()),
         ];
 
         foreach ($scopes as $scope) {
             $tabs[$scope->status->getLabel()] =
                 Tab::make()
                 ->icon($scope->status->getIcon())
-                ->badge(Animation::countByStatus($scope->status))
+                ->badge(Post::countByStatus($scope->status))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('status', $scope->status));
         }
 
@@ -43,14 +47,14 @@ class ListAnimations extends ListRecords
             $tabs[$scope->source] =
                 Tab::make()
                 ->badgeColor('secondary')
-                ->badge(Animation::countBySource($scope->source))
+                ->badge(Post::countBySource($scope->source))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('source', $scope->source));
         }
 
         foreach ($scopes as $scope) {
             $tabs[$scope->category->name] = Tab::make()
                 ->badgeColor('secondary')
-                ->badge(Animation::countByCategory($scope->category->name))
+                ->badge(Post::countByCategory($scope->category->name))
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('category', function ($query) use ($scope) {
                     $query->where('name', $scope->category->name);
                 }));

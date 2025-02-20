@@ -2,7 +2,7 @@
 
 namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
 
-use App\Models\Animation;
+use App\Models\Post;
 use App\Filament\Clusters\Collections;
 use Illuminate\Database\Eloquent\{Model, Builder, SoftDeletingScope};
 
@@ -15,7 +15,7 @@ trait ResourceInfo
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['title', 'description'];
+        return ['title', 'content'];
     }
 
     public static function getGlobalSearchResultsLimit(): int
@@ -30,7 +30,12 @@ trait ResourceInfo
 
     public static function getModel(): string
     {
-        return Animation::class;
+        return Post::class;
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('core.collection.animation.label');
     }
 
     public static function getEloquentQuery(): Builder

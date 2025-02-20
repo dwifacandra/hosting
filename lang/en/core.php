@@ -77,7 +77,15 @@ return [
             'icon'        => 'outline.motion_photos_auto',
             'icon_active' => 'fill.motion_photos_auto',
         ],
-        'core_icon'      => [
+        'photograph'      => [
+            'label'       => 'Photograph',
+            'title'       => 'Photograph',
+            'heading'     => 'Photograph',
+            'subheading'  => '',
+            'icon'        => 'outline.photo_library',
+            'icon_active' => 'fill.photo_library',
+        ],
+        'core_icon'       => [
             'label'       => 'Icons',
             'title'       => 'Icons',
             'heading'     => 'Icons',
@@ -91,17 +99,51 @@ return [
     | Contents
     |--------------------------------------------------------------------------
     */
-    'content'          => [
+    'content'         => [
         'label'       => 'Content Management',
         'icon'        => 'outline.deployed_code',
         'icon_active' => 'fill.deployed_code',
-        'category'      => [
+        'category'        => [
             'label'       => 'Categories',
             'title'       => 'Categories',
             'heading'     => 'Categories',
             'subheading'  => '',
             'icon'        => 'outline.category',
             'icon_active' => 'fill.category',
+        ],
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Resume
+    |--------------------------------------------------------------------------
+    */
+    'resume'          => [
+        'label'       => 'Resume',
+        'icon'        => 'outline.picture_as_pdf',
+        'icon_active' => 'fill.picture_as_pdf',
+        'company'         => [
+            'label'       => 'Companies',
+            'title'       => 'Companies',
+            'heading'     => 'Companies',
+            'subheading'  => '',
+            'icon'        => 'outline.corporate_fare',
+            'icon_active' => 'outline.corporate_fare',
+        ],
+        'experience'         => [
+            'label'       => 'Experiences',
+            'title'       => 'Experiences',
+            'heading'     => 'Experiences',
+            'subheading'  => '',
+            'icon'        => 'outline.work_history',
+            'icon_active' => 'fill.work_history',
+        ],
+        'skill'         => [
+            'label'       => 'Skills',
+            'title'       => 'Skills',
+            'heading'     => 'Skills',
+            'subheading'  => '',
+            'icon'        => 'outline.trophy',
+            'icon_active' => 'fill.trophy',
         ],
     ],
     /*

@@ -1,6 +1,6 @@
 <div class="sticky bg-white dark:bg-neutral-900 shadow-md top-10 md:top-9 z-[5]">
     <ol
-        class="flex items-center max-w-screen-xl px-4 py-1.5 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
+        class="flex items-center capitalize max-w-screen-xl px-4 py-1.5 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
         @foreach ($items as $item)
         <li wire:key="breadcrumb-{{ $item['label'] }}" class="inline-flex items-center">
             @if (!$loop->last)

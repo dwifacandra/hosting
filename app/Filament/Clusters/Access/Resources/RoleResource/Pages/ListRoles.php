@@ -13,7 +13,11 @@ class ListRoles extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('New Role')
+                ->icon('fill.add_circle')
+                ->color('success')
+                ->keyBindings(['ctrl+alt+n']),
         ];
     }
 }
