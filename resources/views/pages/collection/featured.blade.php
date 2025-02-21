@@ -1,7 +1,7 @@
 <div class="flex flex-col px-4 gap-y-4">
     <div class="flex items-center justify-between">
         <h1 class="page-title-primary">Collections</h1>
-        <a href="/products" class="text-sm core-b-secondary">All Collections</a>
+        <a href="{{ route('collection') }}" class="text-sm core-b-secondary">All Collections</a>
     </div>
     @if ($categories->isEmpty())
     <livewire:components.card.empty-state />
@@ -24,13 +24,20 @@
         @foreach ($category->collections as $collection)
         <div wire:key="collection-{{ $collection->id }}"
             class="overflow-hidden transition duration-200 ease-in delay-75 border shadow-md hover:shadow-lg border-neutral-200 dark:border-neutral-950">
-            <a href="{{ route('collection.detail',
-            ['scope'=> $collection->scope,'category' => Str::slug($collection->category->name), 'slug' => $collection->slug]) }}"
-                class="relative">
+            <a href="{{ route('collection.detail',[
+                'scope'=> $collection->scope,
+                'category' => $collection->category->slug,
+                'slug' => $collection->slug
+            ]) }}" class="relative">
                 <img class="object-cover transition-transform duration-500 ease-in-out cursor-zoom-in size-24 md:size-32 hover:scale-105"
                     src="{{ $collection->getFirstMediaUrl('collections','cover') }}" alt="{{ $collection->title }}" />
                 <span class="absolute capitalize text-xs top-0 px-1 py-0.5 z-[1] bg-rose-500/90 text-white">{{
                     $collection->scope }}</span>
+                <span
+                    class="absolute capitalize text-xs bottom-0 inline-flex gap-1 right-0 px-1 py-0.5 z-[1]  text-white/90">
+                    <x-icon name="fill.visibility" class="size-4 core-icon" />
+                    {{ $collection->views }}
+                </span>
             </a>
         </div>
         @endforeach

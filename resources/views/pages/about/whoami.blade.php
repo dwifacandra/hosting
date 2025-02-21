@@ -25,7 +25,7 @@
                         {{ __("core.about.whoami") }}
                     </p>
                 </div>
-                <div
+                <div id="contact"
                     class="flex flex-col gap-6 p-6 bg-white border rounded-sm shadow-md dark:bg-white/10 border-neutral-300 dark:border-neutral-950 group hover:shadow-lg">
                     <div class="flex flex-col gap-4">
                         <h2 class="page-title-secondary">Contacts</h2>

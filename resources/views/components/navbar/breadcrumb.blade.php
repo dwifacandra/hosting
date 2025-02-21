@@ -1,15 +1,15 @@
 <div class="sticky bg-white dark:bg-neutral-900 shadow-md top-10 md:top-9 z-[5]">
     <ol
-        class="flex items-center capitalize max-w-screen-xl px-4 py-1.5 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
+        class="{{ $width }} flex items-center capitalize px-4 py-1.5 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
         @foreach ($items as $item)
         <li wire:key="breadcrumb-{{ $item['label'] }}" class="inline-flex items-center">
             @if (!$loop->last)
             @if ($item['url'] === route('landing-page'))
-            <a class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
+            <a aria-label="home" class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
                 <x-icon name="fill.home" class="size-4 core-icon" />
             </a>
             @else
-            <a class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
+            <a aria-label="$item['label']" class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
                 {{ $item['label'] }}
             </a>
             @endif

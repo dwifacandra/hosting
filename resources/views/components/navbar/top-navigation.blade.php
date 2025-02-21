@@ -32,7 +32,7 @@
                         class="shrink-0 size-6 core-icon" />
                 </a>
                 @else
-                <a href="{{ route('filament.core.auth.login') }}"
+                <a href="{{ route('filament.core.auth.login') }}" rel="nofollow"
                     class="inline-flex items-center h-10 p-2 border-l md:h-8 border-secondary-300 gap-x-2">
                     <x-icon name="fill.lock" class="shrink-0 size-4 core-icon" />
                 </a>
@@ -46,7 +46,7 @@
                     class="flex flex-col gap-2 text-sm font-semibold md:text-xs md:items-center md:flex-row md:justify-center md:px-4">
                     <a href="{{ route('about.whoami') }}" class="core-b-secondary">About</a>
                     <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Blog</a>
-                    <a href="{{ route('filament.core.pages.dashboard') }}" class="core-b-secondary">Collections</a>
+                    <a href="{{ route('collection') }}" class="core-b-secondary">Collections</a>
                 </div>
                 <div class="flex flex-row items-center md:justify-center gap-x-1">
                     @if (Auth::check())
@@ -56,9 +56,9 @@
                             class="p-0.5 shrink-0 size-6" />
                     </a>
                     @else
-                    <a aria-label="login" href="{{ route('filament.core.auth.login') }}"
+                    <a aria-label="login" href="{{ route('filament.core.auth.login') }}" rel="nofollow"
                         class="inline-flex items-center p-1 border border-secondary-300 gap-x-2">
-                        <x-icon name="core.fill.lock" class="shrink-0 size-4 core-icon" />
+                        <x-icon name="fill.lock" class="shrink-0 size-4 core-icon" />
                     </a>
                     @endif
                     <livewire:components.toggle.theme />

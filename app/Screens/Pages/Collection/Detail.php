@@ -20,7 +20,9 @@ class Detail extends Component
     {
         $this->link = url()->current();
         $this->slug = $slug;
-        $this->collection = Post::where('slug', $this->slug)->first();
+        $this->collection =
+            Post::where('slug', $this->slug)
+            ->where('scope', '!=', PostScope::POST)->first();
 
         if (!$this->collection) {
             redirect()->route('landing-page');
@@ -38,7 +40,9 @@ class Detail extends Component
                 $this->isYoutube = true;
             }
 
-            $this->relates = Post::related($this->collection->category_id)->take(5)->get();
+            $this->relates =
+                Post::related($this->collection->category_id)
+                ->where('scope', '!=', PostScope::POST)->take(5)->get();
         }
     }
 
@@ -62,9 +66,18 @@ class Detail extends Component
         return view('pages.collection.detail', [
             'breadcrumbItems' => [
                 ['label' => 'Home', 'url' => route('landing-page')],
-                ['label' => 'Collection', 'url' => null],
-                ['label' => $this->collection->scope, 'url' => null],
-                ['label' => $this->collection->category->name, 'url' => null],
+                ['label' => 'Collection', 'url' => route('collection')],
+                [
+                    'label' => $this->collection->scope,
+                    'url' => route('collection.scope', ['scope' => $this->collection->scope])
+                ],
+                [
+                    'label' => $this->collection->category->name,
+                    'url' => route('collection.category', [
+                        'scope' => $this->collection->scope,
+                        'category' => $this->collection->category->slug
+                    ])
+                ],
                 ['label' => $this->collection->title, 'url' => null],
             ],
         ]);

@@ -65,8 +65,16 @@ return [
     */
     'blog'          => [
         'label'       => 'Blog',
-        'icon'        => 'fluentui-image-shadow-24',
-        'icon_active' => 'fluentui-image-shadow-24',
+        'icon'        => 'outline.rss_feed',
+        'icon_active' => 'outline.rss_feed',
+        'post'       => [
+            'label'       => 'Posts',
+            'title'       => 'Posts',
+            'heading'     => 'Posts',
+            'subheading'  => '',
+            'icon'        => 'outline.library_books',
+            'icon_active' => 'fill.library_books',
+        ],
     ],
     /*
     |--------------------------------------------------------------------------
@@ -75,8 +83,8 @@ return [
     */
     'collection'          => [
         'label'       => 'Collections',
-        'icon'        => 'outline.library_books',
-        'icon_active' => 'fill.library_books',
+        'icon'        => 'outline.collections_bookmark',
+        'icon_active' => 'fill.collections_bookmark',
         'animation'       => [
             'label'       => 'Animation',
             'title'       => 'Animation',

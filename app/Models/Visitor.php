@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Enums\Locale;
 use Illuminate\Support\Str;
-use App\Casts\JsonCast;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +17,7 @@ class Visitor extends Model
     ];
     protected $casts = [
         'locale' => Locale::class,
-        'page_visited' => JsonCast::class,
+        'page_visited' => 'array',
     ];
     public function getBrowserAttribute(): ?string
     {

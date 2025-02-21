@@ -2,6 +2,7 @@
 
 namespace App\Filament\Clusters\Collections\Resources\PhotographResource\Schemes;
 
+use App\Enums\PostScope;
 use App\Models\Post;
 use App\Filament\Clusters\Collections;
 use Illuminate\Database\Eloquent\{Model, Builder, SoftDeletingScope};
@@ -16,6 +17,11 @@ trait ResourceInfo
     public static function getGloballySearchableAttributes(): array
     {
         return ['title', 'content'];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->where('scope', PostScope::PHOTOGRAPH);
     }
 
     public static function getGlobalSearchResultsLimit(): int

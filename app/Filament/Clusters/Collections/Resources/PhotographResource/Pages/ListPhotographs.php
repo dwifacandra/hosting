@@ -39,7 +39,7 @@ class ListPhotographs extends ListRecords
             $tabs[$scope->status->getLabel()] =
                 Tab::make()
                 ->icon($scope->status->getIcon())
-                ->badge(Post::countByStatus($scope->status))
+                ->badge(Post::inScope(PostScope::PHOTOGRAPH)->countByStatus($scope->status))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('status', $scope->status));
         }
 
@@ -47,14 +47,14 @@ class ListPhotographs extends ListRecords
             $tabs[$scope->source] =
                 Tab::make()
                 ->badgeColor('secondary')
-                ->badge(Post::countBySource($scope->source))
+                ->badge(Post::inScope(PostScope::PHOTOGRAPH)->countBySource($scope->source))
                 ->modifyQueryUsing(fn(Builder  $query) => $query->where('source', $scope->source));
         }
 
         foreach ($scopes as $scope) {
             $tabs[$scope->category->name] = Tab::make()
                 ->badgeColor('secondary')
-                ->badge(Post::countByCategory($scope->category->name))
+                ->badge(Post::inScope(PostScope::PHOTOGRAPH)->countByCategory($scope->category->name))
                 ->modifyQueryUsing(fn(Builder $query) => $query->whereHas('category', function ($query) use ($scope) {
                     $query->where('name', $scope->category->name);
                 }));

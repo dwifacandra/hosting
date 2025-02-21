@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Filament\Pages\Dashboard;
 use Filament\Navigation\{NavigationBuilder, NavigationGroup, NavigationItem};
-use App\Filament\Clusters\{Access, Collections, Statistic, Contents, Resumes};
+use App\Filament\Clusters\{Access, Blog, Collections, Statistic, Contents, Resumes};
 use TomatoPHP\FilamentMediaManager;
 
 trait Navigations
@@ -24,7 +24,9 @@ trait Navigations
             NavigationGroup::make()
                 ->label(__('core.blog.label'))
                 ->icon(__('core.blog.icon'))
-                ->items([]),
+                ->items([
+                    ...self::canAccess(Blog\Resources\PostResource::getNavigationItems(), 'post'),
+                ]),
             NavigationGroup::make()
                 ->label(__('core.collection.label'))
                 ->icon(__('core.collection.icon'))

@@ -59,7 +59,7 @@
             </div>
             <div class="flex flex-wrap gap-x-1">
                 @foreach ($collection->tags as $tag)
-                <a href="">
+                <a href="{{ route('collection.tag', ['tag' => $tag->slug]) }}">
                     <span class="px-2 py-0.5 text-sm rounded-full bg-primary text-primary-50">
                         {{ $tag->name }}
                     </span>

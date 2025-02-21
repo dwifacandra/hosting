@@ -6,11 +6,13 @@ use Livewire\Component;
 
 class Breadcrumb extends Component
 {
-    public $items = [];
+    public $items;
+    public $width;
 
-    public function mount($items = null)
+    public function mount($items = [], $width = 'max-w-screen-xl')
     {
         $this->items = $items;
+        $this->width = $width;
     }
 
     public function render()

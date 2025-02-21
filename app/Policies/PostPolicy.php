@@ -15,7 +15,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_photograph');
+        return $user->can('view_any_post');
     }
 
     /**
@@ -23,7 +23,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post): bool
     {
-        return $user->can('view_photograph');
+        return $user->can('view_post');
     }
 
     /**
@@ -31,7 +31,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_photograph');
+        return $user->can('create_post');
     }
 
     /**
@@ -39,7 +39,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return $user->can('update_photograph');
+        return $user->can('update_post');
     }
 
     /**
@@ -47,7 +47,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return $user->can('delete_photograph');
+        return $user->can('delete_post');
     }
 
     /**
@@ -55,7 +55,7 @@ class PostPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_photograph');
+        return $user->can('delete_any_post');
     }
 
     /**
@@ -63,7 +63,7 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post): bool
     {
-        return $user->can('force_delete_photograph');
+        return $user->can('force_delete_post');
     }
 
     /**
@@ -71,7 +71,7 @@ class PostPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_photograph');
+        return $user->can('force_delete_any_post');
     }
 
     /**
@@ -79,7 +79,7 @@ class PostPolicy
      */
     public function restore(User $user, Post $post): bool
     {
-        return $user->can('restore_photograph');
+        return $user->can('restore_post');
     }
 
     /**
@@ -87,7 +87,7 @@ class PostPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_photograph');
+        return $user->can('restore_any_post');
     }
 
     /**
@@ -95,7 +95,7 @@ class PostPolicy
      */
     public function replicate(User $user, Post $post): bool
     {
-        return $user->can('replicate_photograph');
+        return $user->can('replicate_post');
     }
 
     /**
@@ -103,6 +103,6 @@ class PostPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_photograph');
+        return $user->can('reorder_post');
     }
 }

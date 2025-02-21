@@ -40,10 +40,20 @@ Route::prefix('about')->group(function () {
     Route::get('/whoami', About\WhoAmI::class)->name('about.whoami');
 });
 
+// Blog
+// Route::prefix('blog')->group(function () {
+//     Route::get('/', Collection\ListCollection::class)->name('collection');
+//     Route::get('/{scope}', Collection\ListCollection::class)->name('collection.scope');
+//     Route::get('/tag/{tag}', Collection\ListCollection::class)->name('collection.tag');
+//     Route::get('/{scope}/{category}', Collection\ListCollection::class)->name('collection.category');
+//     Route::get('/{scope}/{category}/{slug}', Collection\Detail::class)->name('collection.detail');
+// });
+
 // Collection
 Route::prefix('collection')->group(function () {
-    Route::get('/', function () {
-        return redirect()->route('landing-page');
-    })->name('collection');
+    Route::get('/', Collection\ListCollection::class)->name('collection');
+    Route::get('/{scope}', Collection\ListCollection::class)->name('collection.scope');
+    Route::get('/tag/{tag}', Collection\ListCollection::class)->name('collection.tag');
+    Route::get('/{scope}/{category}', Collection\ListCollection::class)->name('collection.category');
     Route::get('/{scope}/{category}/{slug}', Collection\Detail::class)->name('collection.detail');
 });

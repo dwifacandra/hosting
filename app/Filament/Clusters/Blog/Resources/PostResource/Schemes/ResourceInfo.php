@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Clusters\Collections\Resources\AnimationResource\Schemes;
+namespace App\Filament\Clusters\Blog\Resources\PostResource\Schemes;
 
 use App\Enums\PostScope;
+use App\Filament\Clusters\Blog;
 use App\Models\Post;
-use App\Filament\Clusters\Collections;
 use Illuminate\Database\Eloquent\{Model, Builder, SoftDeletingScope};
 
 trait ResourceInfo
@@ -21,7 +21,7 @@ trait ResourceInfo
 
     public static function getGlobalSearchEloquentQuery(): Builder
     {
-        return parent::getGlobalSearchEloquentQuery()->where('scope', PostScope::ANIMATION);
+        return parent::getGlobalSearchEloquentQuery()->where('scope', PostScope::POST);
     }
 
     public static function getGlobalSearchResultsLimit(): int
@@ -31,7 +31,7 @@ trait ResourceInfo
 
     public static function getCluster(): ?string
     {
-        return Collections::class;
+        return Blog::class;
     }
 
     public static function getModel(): string
@@ -41,7 +41,7 @@ trait ResourceInfo
 
     public static function getModelLabel(): string
     {
-        return __('core.collection.animation.label');
+        return __('core.blog.post.label');
     }
 
     public static function getEloquentQuery(): Builder
@@ -69,16 +69,16 @@ trait ResourceInfo
 
     public static function getNavigationLabel(): string
     {
-        return __('core.collection.animation.label');
+        return __('core.blog.post.label');
     }
 
     public static function getNavigationIcon(): string
     {
-        return __('core.collection.animation.icon');
+        return __('core.blog.post.icon');
     }
 
     public static function getActiveNavigationIcon(): string
     {
-        return __('core.collection.animation.icon_active');
+        return __('core.blog.post.icon_active');
     }
 }

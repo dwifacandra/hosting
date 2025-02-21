@@ -99,7 +99,7 @@ trait FormsScheme
                         ]),
                 ])->columnSpanFull()->from('md'),
                 \FilamentTiptapEditor\TiptapEditor::make('content')
-                    ->hiddenLabel()
+                    ->hiddenLabel()->reactive()
                     ->columnSpanFull()
                     ->extraInputAttributes(['style' => 'min-height: 50vh;']),
             ]);
