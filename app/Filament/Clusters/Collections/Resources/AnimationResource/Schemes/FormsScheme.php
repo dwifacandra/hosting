@@ -29,6 +29,7 @@ trait FormsScheme
                                 ->live(onBlur: true)
                                 ->autocapitalize('words')
                                 ->helperText(fn($state): string => 'Slug: ' . Str::slug($state))
+                                ->dehydrateStateUsing(fn(string $state): string => Str::title($state))
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                             Forms\Components\Select::make('category_id')
                                 ->required()

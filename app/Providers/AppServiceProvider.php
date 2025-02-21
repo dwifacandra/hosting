@@ -26,17 +26,17 @@ class AppServiceProvider extends ServiceProvider
             \Filament\View\PanelsRenderHook::USER_MENU_BEFORE,
             fn(): \Illuminate\Contracts\View\View => view('filament.components.button-website'),
         );
-        \BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch::configureUsing(
-            function (\BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch $switch) {
-                $switch
-                    ->locales(['en', 'id'])
-                    ->renderHook('panels::user-menu.before')
-                    ->flags([
-                        'en' => asset('img/flags/en.svg'),
-                        'id' => asset('img/flags/id.svg'),
-                    ]);
-            }
-        );
+        // \BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch::configureUsing(
+        //     function (\BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch $switch) {
+        //         $switch
+        //             ->locales(['en', 'id'])
+        //             ->renderHook('panels::user-menu.before')
+        //             ->flags([
+        //                 'en' => asset('img/flags/en.svg'),
+        //                 'id' => asset('img/flags/id.svg'),
+        //             ]);
+        //     }
+        // );
     }
 
     /**
