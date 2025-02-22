@@ -12,7 +12,8 @@
             data-hs-tab="#collection-tab-content-{{ $index }}" aria-controls="collection-tab-content-{{ $index }}"
             role="tab" type="button" id="collection-tab-{{ $index }}"
             class="{{ $index === 0 ? 'active' : '' }} text-sm inline-flex justify-center">
-            <span class="px-1 min-w-5 bg-secondary-950 text-secondary-50">{{ $category->posts_count }}</span>
+            <span class="px-1 border border-secondary-950 min-w-5 bg-secondary-950 text-secondary-50">{{
+                $category->posts_count }}</span>
             <span class="px-2 border bg-secondary-100 dark:bg-secondary-800">{{ $category->name }}</span>
         </button>
         @endforeach
