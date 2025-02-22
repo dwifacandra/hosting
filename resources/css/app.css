@@ -140,3 +140,20 @@ html {
     bg-primary shadow-sm
     inline-flex items-center justify-center;
 }
+
+/* Post */
+.post-content {
+    @apply flex flex-col gap-2;
+}
+.post-content h1 {
+    @apply font-black text-xl;
+}
+.post-content h2 {
+    @apply font-extrabold text-lg;
+}
+.post-content h3 {
+    @apply font-bold text-lg;
+}
+.post-content hr {
+    @apply border-secondary-300 dark:border-white/80;
+}

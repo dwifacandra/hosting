@@ -37,22 +37,22 @@
                         class="rounded-full shrink-0 size-10">
                     <div class="flex flex-col">
                         <h2 class="text-sm font-semibold">{{ $collection->author->name }}</h2>
-                        <span class="text-xs text-secondary-600">
+                        <span class="text-xs text-secondary-600 dark:text-secondary-200">
                             {{ $collection->views }}x views
                         </span>
                     </div>
                 </div>
                 <div class="flex flex-row items-center justify-center gap-2" role="group">
                     <button wire:click="like" role="button" class="inline-flex gap-1 group">
-                        <x-icon name="outline.thumb_up" class="size-4 shrink-0 group-hover:hidden" />
-                        <x-icon name="fill.thumb_up" class="hidden size-4 shrink-0 group-hover:block" />
+                        <x-icon name="outline.thumb_up" class="size-4 core-icon shrink-0 group-hover:hidden" />
+                        <x-icon name="fill.thumb_up" class="hidden core-icon size-4 shrink-0 group-hover:block" />
                         <span class="text-sm">{{ $collection->likes }}</span>
                     </button>
                     <button wire:click="dislike" role="button" class="inline-flex gap-1">
-                        <x-icon name="outline.thumb_down" class="size-4 shrink-0" />
+                        <x-icon name="outline.thumb_down" class="size-4 core-icon shrink-0" />
                     </button>
                     <button wire:click="copyToClipboard" role="button" class="inline-flex items-center gap-1">
-                        <x-icon name="outline.library_books" class="size-4 shrink-0" />
+                        <x-icon name="outline.library_books" class="size-4 core-icon shrink-0" />
                         <span class="text-sm">Copy</span>
                     </button>
                 </div>
@@ -66,8 +66,8 @@
                 </a>
                 @endforeach
             </div>
-            <div class="text-sm">
-                {!! $collection->content !!}
+            <div class="text-sm post-content">
+                {!! tiptap_converter()->asHTML($collection->content) !!}
             </div>
         </div>
         <div
@@ -82,12 +82,13 @@
                         src="{{ $related->getFirstMediaUrl('collections','cover') }}" alt="{{ $related->title }}" />
                     <div class="flex flex-col flex-1 gap-1">
                         <h2 class="font-semibold line-clamp-2">{{ $related->title }}</h2>
-                        <h3 class="text-sm font-medium text-secondary-600">{{ $related->author->name }}</h3>
+                        <h3 class="text-sm font-medium text-secondary-600 dark:text-secondary-200">{{
+                            $related->author->name }}</h3>
                         <div class="inline-flex gap-1">
-                            <span class="text-sm text-secondary-600">
+                            <span class="text-sm text-secondary-600 dark:text-secondary-200">
                                 {{ $related->views }}x views
                             </span> ·
-                            <span class="text-sm text-secondary-600">
+                            <span class="text-sm text-secondary-600 dark:text-secondary-200">
                                 {{ $related->created_at->diffForHumans() }}
                             </span>
                         </div>
