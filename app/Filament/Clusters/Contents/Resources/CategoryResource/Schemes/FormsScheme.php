@@ -40,7 +40,10 @@ trait FormsScheme
                             ->native(false)
                             ->preload()
                             ->searchable()
-                            ->options(PostScope::class),
+                            ->options(array_merge(
+                                PostScope::toArray(),
+                                ['skill' => 'Skill']
+                            )),
                         Forms\Components\Select::make('icon')
                             ->native(false)
                             ->preload()

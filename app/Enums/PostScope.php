@@ -22,4 +22,15 @@ enum PostScope: string implements HasLabel
             self::DESIGN => 'Design',
         };
     }
+
+    public static function toArray(): array
+    {
+        return [
+            self::POST->value => self::POST->getLabel(),
+            self::ANIMATION->value => self::ANIMATION->getLabel(),
+            self::VIDEO->value => self::VIDEO->getLabel(),
+            self::PHOTOGRAPH->value => self::PHOTOGRAPH->getLabel(),
+            self::DESIGN->value => self::DESIGN->getLabel(),
+        ];
+    }
 }
