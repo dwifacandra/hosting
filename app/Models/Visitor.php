@@ -15,10 +15,12 @@ class Visitor extends Model
         'user_agent',
         'page_visited'
     ];
+
     protected $casts = [
         'locale' => Locale::class,
         'page_visited' => 'array',
     ];
+
     public function getBrowserAttribute(): ?string
     {
         $userAgent = $this->user_agent;
@@ -32,6 +34,7 @@ class Visitor extends Model
             return 'Unknown';
         }
     }
+
     public function getOSAttribute(): ?string
     {
         $userAgent = $this->user_agent;
@@ -46,30 +49,37 @@ class Visitor extends Model
             return 'Unknown';
         }
     }
+
     public function getPageUrlAttribute(): ?string
     {
         return $this->page_visited['page_url'] ?? null;
     }
+
     public function getPagePathAttribute(): ?string
     {
         return $this->page_visited['page_path'] ?? null;
     }
+
     public function getPageRefererAttribute(): ?string
     {
         return $this->page_visited['page_referer'] ?? null;
     }
+
     public function getRouteNameAttribute(): ?string
     {
         return $this->page_visited['route_name'] ?? null;
     }
+
     public function getRouteQueryAttribute(): ?array
     {
         return $this->page_visited['route_query'] ?? null;
     }
+
     public function getUserNameAttribute(): ?string
     {
         return $this->page_visited['user_name'] ?? null;
     }
+
     public function scopeTotalByLocale($query, $months = 1)
     {
         return $query->select('locale', DB::raw('count(*) as total'))

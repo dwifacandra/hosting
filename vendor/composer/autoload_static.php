@@ -223,6 +223,8 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Flowframe\\Trend\\Database\\Factories\\' => 35,
+            'Flowframe\\Trend\\' => 16,
             'Filament\\Widgets\\' => 17,
             'Filament\\Tables\\' => 16,
             'Filament\\Support\\' => 17,
@@ -737,6 +739,14 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'Flowframe\\Trend\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flowframe/laravel-trend/database/factories',
+        ),
+        'Flowframe\\Trend\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flowframe/laravel-trend/src',
+        ),
         'Filament\\Widgets\\' => 
         array (
             0 => __DIR__ . '/..' . '/filament/widgets/src',
@@ -922,7 +932,9 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         'App\\Enums\\PostStatus' => __DIR__ . '/../..' . '/app/Enums/PostStatus.php',
         'App\\Enums\\Rating' => __DIR__ . '/../..' . '/app/Enums/Rating.php',
         'App\\Enums\\SourceType' => __DIR__ . '/../..' . '/app/Enums/SourceType.php',
+        'App\\Events\\DevEvent' => __DIR__ . '/../..' . '/app/Events/DevEvent.php',
         'App\\Filament\\Clusters\\Access' => __DIR__ . '/../..' . '/app/Filament/Clusters/Access.php',
+        'App\\Filament\\Clusters\\Access\\Pages\\DevOps' => __DIR__ . '/../..' . '/app/Filament/Clusters/Access/Pages/DevOps.php',
         'App\\Filament\\Clusters\\Access\\Resources\\RoleResource' => __DIR__ . '/../..' . '/app/Filament/Clusters/Access/Resources/RoleResource.php',
         'App\\Filament\\Clusters\\Access\\Resources\\RoleResource\\Pages\\CreateRole' => __DIR__ . '/../..' . '/app/Filament/Clusters/Access/Resources/RoleResource/Pages/CreateRole.php',
         'App\\Filament\\Clusters\\Access\\Resources\\RoleResource\\Pages\\EditRole' => __DIR__ . '/../..' . '/app/Filament/Clusters/Access/Resources/RoleResource/Pages/EditRole.php',
@@ -996,9 +1008,17 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         'App\\Filament\\Clusters\\Resumes\\Resources\\SkillResource\\Schemes\\ResourceInfo' => __DIR__ . '/../..' . '/app/Filament/Clusters/Resumes/Resources/SkillResource/Schemes/ResourceInfo.php',
         'App\\Filament\\Clusters\\Resumes\\Resources\\SkillResource\\Schemes\\TablesScheme' => __DIR__ . '/../..' . '/app/Filament/Clusters/Resumes/Resources/SkillResource/Schemes/TablesScheme.php',
         'App\\Filament\\Clusters\\Statistic' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Pages\\ListVisitors' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Pages/ListVisitors.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Pages\\ViewVisitor' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Pages/ViewVisitor.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Schemes\\ResourceInfo' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Schemes/ResourceInfo.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Schemes\\TablesScheme' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Schemes/TablesScheme.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Widgets\\LocaleChart' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Widgets/LocaleChart.php',
+        'App\\Filament\\Clusters\\Statistic\\Resources\\VisitorResource\\Widgets\\TrafficChart' => __DIR__ . '/../..' . '/app/Filament/Clusters/Statistic/Resources/VisitorResource/Widgets/TrafficChart.php',
         'App\\Filament\\Widgets\\ApplicationInfo' => __DIR__ . '/../..' . '/app/Filament/Widgets/ApplicationInfo.php',
         'App\\Helpers\\CoreIcon' => __DIR__ . '/../..' . '/app/Helpers/CoreIcon.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Dev\\AutomationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dev/AutomationController.php',
         'App\\Http\\Controllers\\ServePrivateStorage' => __DIR__ . '/../..' . '/app/Http/Controllers/ServePrivateStorage.php',
         'App\\Http\\Middleware\\SetLocale' => __DIR__ . '/../..' . '/app/Http/Middleware/SetLocale.php',
         'App\\Http\\Middleware\\TrackVisitor' => __DIR__ . '/../..' . '/app/Http/Middleware/TrackVisitor.php',
@@ -1022,6 +1042,7 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         'App\\Policies\\RolePolicy' => __DIR__ . '/../..' . '/app/Policies/RolePolicy.php',
         'App\\Policies\\SkillPolicy' => __DIR__ . '/../..' . '/app/Policies/SkillPolicy.php',
         'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
+        'App\\Policies\\VisitorPolicy' => __DIR__ . '/../..' . '/app/Policies/VisitorPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\Filament\\CorePanelProvider' => __DIR__ . '/../..' . '/app/Providers/Filament/CorePanelProvider.php',
         'App\\Screens\\Components\\Card\\EmptyState' => __DIR__ . '/../..' . '/app/Screens/Components/Card/EmptyState.php',
@@ -3270,6 +3291,13 @@ class ComposerStaticInit2c1d07d6e924c1eb220fe276ae188b7b
         'Filament\\Widgets\\Widget' => __DIR__ . '/..' . '/filament/widgets/src/Widget.php',
         'Filament\\Widgets\\WidgetConfiguration' => __DIR__ . '/..' . '/filament/widgets/src/WidgetConfiguration.php',
         'Filament\\Widgets\\WidgetsServiceProvider' => __DIR__ . '/..' . '/filament/widgets/src/WidgetsServiceProvider.php',
+        'Flowframe\\Trend\\Adapters\\AbstractAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/AbstractAdapter.php',
+        'Flowframe\\Trend\\Adapters\\MySqlAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/MySqlAdapter.php',
+        'Flowframe\\Trend\\Adapters\\PgsqlAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/PgsqlAdapter.php',
+        'Flowframe\\Trend\\Adapters\\SqliteAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/SqliteAdapter.php',
+        'Flowframe\\Trend\\Trend' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Trend.php',
+        'Flowframe\\Trend\\TrendServiceProvider' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/TrendServiceProvider.php',
+        'Flowframe\\Trend\\TrendValue' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/TrendValue.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',

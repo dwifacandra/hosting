@@ -18,8 +18,8 @@ enum Locale: string implements HasLabel, HasIcon
     public function getIcon(): string
     {
         return match ($this) {
-            self::EN => 'flags.4x3.en',
-            self::ID => 'flags.4x3.id',
+            self::EN => 'flags.en',
+            self::ID => 'flags.id',
         };
     }
 }

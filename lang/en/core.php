@@ -169,7 +169,15 @@ return [
     */
     'stats'          => [
         'label'       => 'Statistics',
-        'icon'        => 'fluentui-image-shadow-24',
-        'icon_active' => 'fluentui-image-shadow-24',
+        'icon'        => 'outline.monitoring',
+        'icon_active' => 'outline.monitoring',
+        'visitor'         => [
+            'label'       => 'Visitors',
+            'title'       => 'Visitors',
+            'heading'     => 'Visitors',
+            'subheading'  => '',
+            'icon'        => 'outline.query_stats',
+            'icon_active' => 'outline.query_stats',
+        ],
     ],
 ];
