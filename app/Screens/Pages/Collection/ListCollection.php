@@ -5,7 +5,6 @@ namespace App\Screens\Pages\Collection;
 use Livewire\Component;
 use App\Enums\PostScope;
 use App\Enums\PostStatus;
-use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use App\Models\{Post, Category};
 use Illuminate\Support\Facades\DB;
@@ -80,7 +79,7 @@ class ListCollection extends Component
 
         // isset tag
         if ($this->tag) {
-            $breadcrumb[] = ['label' => Str::title($this->tag), 'url' => null];
+            $breadcrumb[] = ['label' => str_replace('-', ' ', $this->tag), 'url' => null];
             $collections->withAnyTagsOfAnyType([$this->tag]);
         }
 

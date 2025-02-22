@@ -28,6 +28,9 @@ Route::get('/svg/{svgname}', function ($svgname) {
 Route::get('/login', function () {
     return redirect()->route('filament.core.auth.login');
 })->name('login');
+Route::get('/public', function () {
+    return redirect()->route('landing-page');
+});
 
 // Landing Page
 Route::get('/', LandingPage::class)->name('landing-page');

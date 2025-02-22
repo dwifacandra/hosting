@@ -2,7 +2,8 @@
     <livewire:components.navbar.breadcrumb :items="$breadcrumbItems" :width="'max-w-full'" />
     <div class="grid grid-cols-1 md:grid-cols-6">
         {{-- Sidebar --}}
-        <div class="flex flex-col min-h-screen gap-4 p-4 bg-white border-e border-secondary-200">
+        <div
+            class="flex flex-col min-h-screen gap-4 p-4 bg-white border-e border-secondary-200 dark:border-neutral-950 dark:bg-white/10">
             {{-- Scopes --}}
             <div class="flex flex-col gap-2">
                 <h1 class="page-title-primary">

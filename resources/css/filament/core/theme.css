@@ -161,10 +161,10 @@ html {
 /*------------------------------------------------------------------------------------------------*/
 /* TOPBAR AVATAR */
 .fi-topbar .fi-user-menu {
-    @apply h-full bg-white rounded-none;
+    @apply h-full bg-white;
 }
 .fi-topbar .fi-user-menu .fi-user-avatar {
-    @apply size-8 md:size-6 shrink-0;
+    @apply size-8 md:size-6 shrink-0 ring-1 ring-secondary-200 p-0.5;
 }
 
 /**************************************************************************************************/
