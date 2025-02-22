@@ -10,16 +10,3 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 import './echo';
-import Pusher from 'pusher-js';
-
-// Make Pusher available globally
-window.Pusher = Pusher;
-
-// Initialize Echo with Pusher
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: import.meta.env.VITE_PUSHER_APP_KEY, // Pastikan ini sesuai dengan .env
-    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER, // Pastikan ini sesuai dengan .env
-    forceTLS: true,
-    encrypted: true,
-});
