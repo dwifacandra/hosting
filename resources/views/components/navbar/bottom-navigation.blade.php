@@ -22,7 +22,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="space-y-4">
+            <div class="col-span-2 space-y-4">
                 <h2 class="page-subtitle-secondary">Featured</h2>
                 <div class="space-y-2 capitalize text-secondary-700 dark:text-secondary-200">
                     @foreach ($featured as $featuredItem)

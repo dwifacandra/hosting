@@ -6,12 +6,12 @@
     @if ($posts->isEmpty())
     <livewire:components.card.empty-state />
     @endif
-    <div class="grid grid-cols-5 gap-2">
+    <div class="grid grid-cols-2 gap-2 md:grid-cols-5">
         @foreach ($posts as $post)
         <div
             class="flex flex-col bg-white border shadow-sm dark:border-neutral-950 dark:bg-white/10 border-secondary-200 hover:shadow-md">
             <a class="relative">
-                <span class="absolute capitalize text-sm top-0 px-2 py-0 z-[1] bg-rose-500/90 text-white">{{
+                <span class="absolute capitalize text-sm top-0 px-2 py-1 z-[1] bg-rose-500/90 text-white">{{
                     Str::words($post->category->name, 3) }}</span>
                 <img class="object-cover w-full h-52" src="{{ $post->getFirstMediaUrl('collections','cover') }}"
                     alt="{{ $post->title }}" />
