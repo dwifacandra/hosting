@@ -56,6 +56,7 @@ trait Navigations
                 ->items([
                     ...self::canAccess(Access\Resources\UserResource::getNavigationItems(), 'user'),
                     ...self::canAccess(Access\Resources\RoleResource::getNavigationItems(), 'role'),
+                    ...self::canAccess(Access\Pages\DevOps::getNavigationItems(), 'role'),
                 ]),
             NavigationGroup::make()
                 ->label(__('core.stats.label'))

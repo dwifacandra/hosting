@@ -27,6 +27,29 @@ html {
     @apply rounded-sm;
 }
 
+/* CARDS */
+.cards {
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 justify-start px-0 py-2;
+}
+.card {
+    @apply flex flex-col gap-4 p-2 bg-white shadow-none overflow-hidden select-none cursor-default border border-gray-300 justify-between;
+}
+.card-title {
+    @apply text-sm font-medium border-b border-gray-300 py-1;
+}
+.card-title-icon {
+    @apply card-title inline-flex items-center gap-x-1;
+}
+.card-title-icon svg {
+    @apply size-4 shrink-0;
+}
+.card-content {
+    @apply text-sm text-pretty h-full;
+}
+.cards .card .fi-btn {
+    @apply rounded-none px-2 py-1;
+}
+
 /* NOTIFICATION */
 .fi-no {
     @apply pointer-events-none
