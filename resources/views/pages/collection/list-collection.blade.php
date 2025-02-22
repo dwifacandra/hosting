@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-6">
         {{-- Sidebar --}}
         <div
-            class="flex flex-col min-h-screen gap-4 p-4 bg-white border-e border-secondary-200 dark:border-neutral-950 dark:bg-white/10">
+            class="flex flex-col gap-4 p-4 bg-white md:min-h-screen border-e border-secondary-200 dark:border-neutral-950 dark:bg-white/10">
             {{-- Scopes --}}
             <div class="flex flex-col gap-2">
                 <h1 class="page-title-primary">
@@ -13,7 +13,7 @@
                     @foreach ($scopes as $scopeItem)
                     <a wire:navigate wire:key="collection-scope-{{ $scopeItem->scope }}"
                         href="{{ route('collection.scope', ['scope' => $scopeItem->scope]) }}"
-                        class="flex justify-center w-full text-sm capitalize">
+                        class="flex justify-center text-sm capitalize md:w-full">
                         <span class="flex-1 px-2 text-left border line-clamp-1 bg-secondary-100 dark:bg-secondary-800">
                             {{ $scopeItem->scope }}
                         </span>
@@ -36,7 +36,7 @@
                     @foreach ($categories as $category)
                     <a wire:navigate wire:key="collection-category-{{ $category->id }}" href="{{ route('collection.category',
                     ['scope' => $category->scope, 'category' => $category->slug]) }}"
-                        class="flex justify-center w-full text-sm capitalize">
+                        class="flex justify-center text-sm capitalize md:w-full">
                         <span class="flex-1 px-2 text-left border line-clamp-1 bg-secondary-100 dark:bg-secondary-800">
                             {{ $category->name }}
                         </span>

@@ -26,6 +26,7 @@ class CorePanelProvider extends PanelProvider
             ->databaseTransactions()->databaseNotifications()->databaseNotificationsPolling('30s')
             ->sidebarCollapsibleOnDesktop()->globalSearchKeyBindings(['command+k', 'ctrl+f'])
             ->maxContentWidth(\Filament\Support\Enums\MaxWidth::Full)
+            ->favicon(asset('img/logo.ico'))
             ->viteTheme('resources/css/filament/core/theme.css')->darkMode(false)
             ->colors([
                 'primary' => '#E6130C',
