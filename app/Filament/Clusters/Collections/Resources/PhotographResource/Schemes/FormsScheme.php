@@ -15,7 +15,7 @@ trait FormsScheme
             ->schema([
                 Forms\Components\Split::make([
                     Forms\Components\Section::make('General')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\Hidden::make('scope')
                                 ->default(PostScope::PHOTOGRAPH),
@@ -48,13 +48,14 @@ trait FormsScheme
                                 ->type(PostScope::PHOTOGRAPH->value)
                         ]),
                     Forms\Components\Section::make('Sources')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\SpatieMediaLibraryFileUpload::make('photo')
                                 ->required()
-                                ->disk('public')->visibility('public')
+                                ->disk('private')->visibility('private')
                                 ->collection('collections')
                                 ->customProperties(['scope' => 'cover'])
+                                ->conversion('preview')->conversionsDisk('public')
                                 ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
                                 ->image()
                                 ->openable()
@@ -71,7 +72,7 @@ trait FormsScheme
                                 ->columnSpanFull(),
                         ]),
                     Forms\Components\Section::make('Additional')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\Select::make('status')
                                 ->required()

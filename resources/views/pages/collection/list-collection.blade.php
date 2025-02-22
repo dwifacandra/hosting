@@ -82,7 +82,7 @@
                         'slug' => $collection->slug
                     ]) }}" class="relative">
                         <img class="object-cover transition-transform duration-500 ease-in-out size-40 hover:scale-105"
-                            src="{{ $collection->getFirstMediaUrl('collections','cover') }}"
+                            src="{{ $collection->getFirstMediaUrl('collections','preview') }}"
                             alt="{{ $collection->title }}" />
                         @if (!$scope)
                         <span class="absolute capitalize text-xs top-0 px-1 py-0.5 z-[1] bg-rose-500/90 text-white">{{

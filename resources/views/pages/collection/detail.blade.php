@@ -2,14 +2,17 @@
     <livewire:components.navbar.breadcrumb :items="$breadcrumbItems" />
     <div class="grid max-w-screen-xl grid-cols-3 px-4 py-6 mx-auto gap-x-2 gap-y-4">
         @if ($isVideo)
-        <div class="bg-white border shadow-sm col-span-full dark:bg-secondary">
+        <div wire:ignore @contextmenu.prevent="showContextMenu = false"
+            class="relative bg-white border shadow-sm col-span-full dark:bg-secondary">
+            <x-icon name="d-logo" class="absolute top-0 size-20 right-0 opacity-80 z-[1]" />
             @if ($isYoutube)
-            <iframe class="w-full h-[80vh]" src="https://www.youtube.com/embed/{{ $collection->source_url }}"
-                frameborder="0" allowfullscreen></iframe>
+            <iframe class="w-full h-[80vh] select-none"
+                src="https://www.youtube.com/embed/{{ $collection->source_url }}" frameborder="0"
+                allowfullscreen></iframe>
             @else
             @foreach ($collection->getMedia('collections') as $index => $media)
             @if($media->getCustomProperty('scope') === 'attachment')
-            <video controls class="w-full h-[80vh]">
+            <video controls controlsList="nodownload" class="w-full h-[80vh]">
                 <source src="{{ $media->getTemporaryUrl(now()->addMinutes(5)) }}" type="video/mp4">
                 Browser Anda tidak mendukung elemen video.
             </video>
@@ -18,10 +21,12 @@
             @endif
         </div>
         @else
-        <div class="bg-white border shadow-sm col-span-full dark:bg-secondary">
+        <div wire:ignore @contextmenu.prevent="showContextMenu = false"
+            class="relative bg-white border shadow-sm select-none col-span-full dark:bg-secondary">
+            <x-icon name="d-logo" class="absolute top-0 size-20 right-0 opacity-80 z-[1]" />
             @foreach ($collection->getMedia('collections') as $index => $media)
-            @if($media->getCustomProperty('scope') === 'attachment')
-            <img class="object-contain transition-transform duration-500 ease-in-out cursor-zoom-in w-full h-[80vh]"
+            @if($media->getCustomProperty('scope') === 'cover')
+            <img class="object-contain transition-transform duration-500 ease-in-out w-full md:h-[80vh]"
                 src="{{ $media->getTemporaryUrl(now()->addMinutes(5)) }}" alt="{{ $collection->title }}" />
             @endif
             @endforeach
@@ -79,7 +84,7 @@
             ['scope' => $related->scope,'category' => Str::slug($related->category->name), 'slug' => $related->slug]) }}">
                 <div wire:key="relate-{{ $related->id }}" class="flex gap-4">
                     <img class="object-cover size-24 shrink-0"
-                        src="{{ $related->getFirstMediaUrl('collections','cover') }}" alt="{{ $related->title }}" />
+                        src="{{ $related->getFirstMediaUrl('collections','preview') }}" alt="{{ $related->title }}" />
                     <div class="flex flex-col flex-1 gap-1">
                         <h2 class="font-semibold line-clamp-2">{{ $related->title }}</h2>
                         <h3 class="text-sm font-medium text-secondary-600 dark:text-secondary-200">{{

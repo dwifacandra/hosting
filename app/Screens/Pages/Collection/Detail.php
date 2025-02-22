@@ -4,6 +4,7 @@ namespace App\Screens\Pages\Collection;
 
 use Livewire\Component;
 use App\Enums\PostScope;
+use App\Enums\PostStatus;
 use App\Enums\SourceType;
 use App\Models\Post;
 
@@ -22,7 +23,9 @@ class Detail extends Component
         $this->slug = $slug;
         $this->collection =
             Post::where('slug', $this->slug)
-            ->where('scope', '!=', PostScope::POST)->first();
+            ->where('scope', '!=', PostScope::POST)
+            ->where('status', PostStatus::PUBLISH)
+            ->first();
 
         if (!$this->collection) {
             redirect()->route('landing-page');

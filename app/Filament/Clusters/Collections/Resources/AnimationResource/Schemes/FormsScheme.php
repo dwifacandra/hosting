@@ -15,7 +15,7 @@ trait FormsScheme
             ->schema([
                 Forms\Components\Split::make([
                     Forms\Components\Section::make('General')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\Hidden::make('scope')
                                 ->default(PostScope::ANIMATION),
@@ -48,7 +48,7 @@ trait FormsScheme
                                 ->type(PostScope::ANIMATION->value)
                         ]),
                     Forms\Components\Section::make('Sources')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\Select::make('source')
                                 ->required()
@@ -76,7 +76,7 @@ trait FormsScheme
                                 ->columnSpanFull(),
                         ]),
                     Forms\Components\Section::make('Additional')
-                        ->extraAttributes(['style' => 'min-height: 70vh;'])
+                        ->extraAttributes(['class' => 'section-form'])
                         ->schema([
                             Forms\Components\Select::make('status')
                                 ->required()
@@ -92,6 +92,7 @@ trait FormsScheme
                                 ->disk('public')->visibility('public')
                                 ->collection('collections')
                                 ->customProperties(['scope' => 'cover'])
+                                ->conversion('preview')->conversionsDisk('public')
                                 ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
                                 ->image()
                                 ->openable()

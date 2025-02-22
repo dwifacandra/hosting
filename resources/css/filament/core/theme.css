@@ -311,6 +311,9 @@ html {
 }
 /*------------------------------------------------------------------------------------------------*/
 /* PAGE */
+.section-form {
+    @apply md:min-h-[80vh] max-h-[80vh] overflow-y-auto scrollbar-hide;
+}
 .fi-page > section {
     @apply flex flex-col py-0 gap-y-2;
 }

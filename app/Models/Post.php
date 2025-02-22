@@ -7,6 +7,7 @@ use App\Enums\PostStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 
 class Post extends Model implements HasMedia
@@ -35,6 +36,16 @@ class Post extends Model implements HasMedia
             ->useFallbackUrl('/svg/color.no_image');
     }
 
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('preview')
+            ->performOnCollections('collections')
+            ->keepOriginalImageFormat()
+            ->nonQueued()
+            ->width(350)
+            ->height(350);
+    }
+
     public function scopeCountByCategory($query, $categoryName)
     {
         return $query->whereHas('category', function ($query) use ($categoryName) {
@@ -61,6 +72,7 @@ class Post extends Model implements HasMedia
     {
         $query = $query
             ->with(['category', 'author'])
+            ->where('status', PostStatus::PUBLISH)
             ->orderBy('views', 'desc');
 
         if ($category) {

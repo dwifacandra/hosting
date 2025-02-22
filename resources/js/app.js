@@ -27,3 +27,24 @@ function typingEffect() {
     }
 }
 window.typingEffect = typingEffect;
+
+// Hidden Context Menu
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('[wire\\:ignore]').addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+    });
+});
+
+// Image Private
+document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('img');
+    images.forEach(function (image) {
+        image.setAttribute('draggable', 'false');
+        image.addEventListener('dragstart', function (event) {
+            event.preventDefault();
+        });
+        image.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+        });
+    });
+});
