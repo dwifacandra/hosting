@@ -97,7 +97,7 @@
                                     </span>
                                     <p
                                         class="text-sm font-medium text-balance md:text-pretty line-clamp-2 md:text-base">
-                                        {{ $company->description }}
+                                        {!! tiptap_converter()->asText($company->description) !!}
                                     </p>
                                 </div>
                             </div>
