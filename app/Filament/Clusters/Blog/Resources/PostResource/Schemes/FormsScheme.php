@@ -21,7 +21,7 @@ trait FormsScheme
                     ->required(),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('cover')
                     ->hiddenLabel()
-                    ->disk('public')->visibility('public')
+                    ->disk('google')->visibility('public')
                     ->collection('collections')
                     ->customProperties(['scope' => 'cover'])
                     ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))

@@ -21,7 +21,8 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "spatie/laravel-sitemap": "^7.3",
-        "tomatophp/filament-media-manager": "^1.1"
+        "tomatophp/filament-media-manager": "^1.1",
+        "yaza/laravel-google-drive-storage": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

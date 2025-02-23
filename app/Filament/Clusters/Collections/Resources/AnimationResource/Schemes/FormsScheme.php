@@ -66,7 +66,7 @@ trait FormsScheme
                             Forms\Components\SpatieMediaLibraryFileUpload::make('attachment')
                                 ->required(fn(Get $get): bool => $get('source') === SourceType::LOCAL->value)
                                 ->hidden(fn(Get $get): bool => $get('source') === SourceType::YOUTUBE->value)
-                                ->disk('private')->visibility('private')
+                                ->disk('google')->visibility('private')
                                 ->collection('collections')
                                 ->customProperties(['scope' => 'attachment'])
                                 ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'attachment'))
@@ -89,7 +89,7 @@ trait FormsScheme
                                 }),
                             Forms\Components\SpatieMediaLibraryFileUpload::make('cover')
                                 ->required()
-                                ->disk('public')->visibility('public')
+                                ->disk('google')->visibility('public')
                                 ->collection('collections')
                                 ->customProperties(['scope' => 'cover'])
                                 ->conversion('thumb')->conversionsDisk('public')
