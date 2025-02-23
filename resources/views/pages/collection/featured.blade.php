@@ -31,7 +31,7 @@
                 'slug' => $collection->slug
             ]) }}" class="relative">
                 <img class="object-cover transition-transform duration-500 ease-in-out cursor-zoom-in size-24 md:size-32 hover:scale-105"
-                    src="{{ $collection->getFirstMediaUrl('collections','preview') }}" alt="{{ $collection->title }}" />
+                    src="{{ $collection->getFirstMediaUrl('collections','thumb') }}" alt="{{ $collection->title }}" />
                 <span class="absolute capitalize text-xs top-0 px-1 py-0.5 z-[1] bg-rose-500/90 text-white">{{
                     $collection->scope }}</span>
                 <span

@@ -38,10 +38,8 @@ class Post extends Model implements HasMedia
 
     public function registerMediaConversions(?Media $media = null): void
     {
-        $this->addMediaConversion('preview')
-            ->performOnCollections('collections')
+        $this->addMediaConversion('thumb')
             ->keepOriginalImageFormat()
-            ->nonQueued()
             ->width(350)
             ->height(350);
     }

@@ -55,7 +55,7 @@ trait FormsScheme
                                 ->disk('private')->visibility('private')
                                 ->collection('collections')
                                 ->customProperties(['scope' => 'cover'])
-                                ->conversion('preview')->conversionsDisk('public')
+                                ->conversion('thumb')->conversionsDisk('public')
                                 ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
                                 ->image()
                                 ->openable()

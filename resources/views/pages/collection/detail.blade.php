@@ -84,7 +84,7 @@
             ['scope' => $related->scope,'category' => Str::slug($related->category->name), 'slug' => $related->slug]) }}">
                 <div wire:key="relate-{{ $related->id }}" class="flex gap-4">
                     <img class="object-cover size-24 shrink-0"
-                        src="{{ $related->getFirstMediaUrl('collections','preview') }}" alt="{{ $related->title }}" />
+                        src="{{ $related->getFirstMediaUrl('collections','thumb') }}" alt="{{ $related->title }}" />
                     <div class="flex flex-col flex-1 gap-1">
                         <h2 class="font-semibold line-clamp-2">{{ $related->title }}</h2>
                         <h3 class="text-sm font-medium text-secondary-600 dark:text-secondary-200">{{
