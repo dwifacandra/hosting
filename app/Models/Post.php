@@ -43,8 +43,7 @@ class Post extends Model implements HasMedia
             ->keepOriginalImageFormat()
             ->width(350)
             ->height(350)
-            ->sharpen(10)
-            ->queued();
+            ->sharpen(10);
     }
 
     public function scopeCountByCategory($query, $categoryName)
