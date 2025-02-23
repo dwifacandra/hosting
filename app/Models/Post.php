@@ -39,8 +39,12 @@ class Post extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
+            ->performOnCollections('collections')
+            ->keepOriginalImageFormat()
             ->width(350)
-            ->height(350);
+            ->height(350)
+            ->sharpen(10)
+            ->queued();
     }
 
     public function scopeCountByCategory($query, $categoryName)
