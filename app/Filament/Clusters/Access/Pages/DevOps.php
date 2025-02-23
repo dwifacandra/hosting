@@ -86,6 +86,26 @@ class DevOps extends Page implements HasActions
             ->action(fn() => $this->automation->callCommand('storage:unlink'));
     }
 
+    public function storageRegenerate(): Action
+    {
+        return Action::make('storageRegenerate')
+            ->label('Process')
+            ->requiresConfirmation()
+            ->color('danger')
+            ->size(ActionSize::Small)
+            ->action(fn() => $this->automation->callCommand('media-library:regenerate'));
+    }
+
+    public function storageClean(): Action
+    {
+        return Action::make('storageClean')
+            ->label('Process')
+            ->requiresConfirmation()
+            ->color('danger')
+            ->size(ActionSize::Small)
+            ->action(fn() => $this->automation->callCommand('media-library:clean'));
+    }
+
     public function permissionSync(): Action
     {
         return Action::make('permissionSync')

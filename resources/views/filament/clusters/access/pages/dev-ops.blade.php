@@ -62,6 +62,26 @@
         </div>
         <div class="card">
             <h2 class="card-title-icon">
+                <x-icon name="core.outline.cloud_off" class="animate-pulse" />
+                Media Regenerate
+            </h2>
+            <p class="card-content">
+                Regenerate the derived images of media
+            </p>
+            {{ $this->storageRegenerate }}
+        </div>
+        <div class="card">
+            <h2 class="card-title-icon">
+                <x-icon name="core.outline.cloud_off" class="animate-pulse" />
+                Media Clean
+            </h2>
+            <p class="card-content">
+                Clean deprecated conversions and files without related model.
+            </p>
+            {{ $this->storageClean }}
+        </div>
+        <div class="card">
+            <h2 class="card-title-icon">
                 <x-icon name="core.outline.lock_clock" class="animate-pulse" />
                 Permission Sync
             </h2>
