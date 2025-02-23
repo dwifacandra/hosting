@@ -20,10 +20,22 @@ class DevOps extends Page implements HasActions
     protected static ?string $activeNavigationIcon = 'icon-core.fill.developer_board';
     protected static ?int $navigationSort = 3;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
     public function __construct()
     {
         $this->automation = new AutomationController();
     }
+
+    public function coreOptimize(): Action
+    {
+        return Action::make('coreOptimize')
+            ->label('Process')
+            ->requiresConfirmation()
+            ->color('danger')
+            ->size(ActionSize::Small)
+            ->action(fn() => $this->automation->callCommand('core:optimizer'));
+    }
+
     public function optimize(): Action
     {
         return Action::make('optimize')
@@ -33,6 +45,7 @@ class DevOps extends Page implements HasActions
             ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('optimize'));
     }
+
     public function optimizeClear(): Action
     {
         return Action::make('optimizeClear')
@@ -42,6 +55,7 @@ class DevOps extends Page implements HasActions
             ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('optimize:clear'));
     }
+
     public function runMigrate(): Action
     {
         return Action::make('runMigrate')
@@ -51,6 +65,7 @@ class DevOps extends Page implements HasActions
             ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('migrate --force'));
     }
+
     public function storageLink(): Action
     {
         return Action::make('storageLink')
@@ -60,6 +75,7 @@ class DevOps extends Page implements HasActions
             ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('storage:link'));
     }
+
     public function storageUnlink(): Action
     {
         return Action::make('storageUnlink')
@@ -69,6 +85,7 @@ class DevOps extends Page implements HasActions
             ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('storage:unlink'));
     }
+
     public function permissionSync(): Action
     {
         return Action::make('permissionSync')

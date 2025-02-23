@@ -17,7 +17,7 @@ class Icon extends Model
     ];
     public function getRows()
     {
-        return Cache::remember('core_icons', 60 * 60 * 24, function () {
+        return Cache::rememberForever('icons', function () {
             $coreIcon = new CoreIcon();
             $icons = $coreIcon->getIcons();
             return array_map(function ($iconKey) {

@@ -3,6 +3,16 @@
         <div class="card">
             <h2 class="card-title-icon">
                 <x-icon name="core.outline.query_stats" class="animate-pulse" />
+                Core Optimizer
+            </h2>
+            <p class="card-content">
+                Cache Core System to increase performance.
+            </p>
+            {{ $this->coreOptimize }}
+        </div>
+        <div class="card">
+            <h2 class="card-title-icon">
+                <x-icon name="core.outline.query_stats" class="animate-pulse" />
                 Optimize
             </h2>
             <p class="card-content">

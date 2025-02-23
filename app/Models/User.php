@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -59,14 +60,17 @@ class User extends Authenticatable implements
 
     public function getFilamentAvatarUrl(): ?string
     {
-        $prefix = urlencode(Str::substr($this->name, 0, 2));
-        $avatar = 'https://ui-avatars.com/api/?name=' . $prefix . '&color=f8fafc&background=475569';
-        $media = $this->getFirstMedia('avatar');
-        if ($media) {
-            return $media->getTemporaryUrl(now()->addHours(24));
-        } else {
-            return $avatar;
-        }
+        return Cache::remember("user_avatar_{$this->id}", 60 * 60 * 24, function () {
+            $prefix = urlencode(Str::substr($this->name, 0, 2));
+            $avatar = 'https://ui-avatars.com/api/?name=' . $prefix . '&color=f8fafc&background=475569';
+            $media = $this->getFirstMedia('avatar');
+
+            if ($media) {
+                return $media->getTemporaryUrl(now()->addHours(24));
+            } else {
+                return $avatar;
+            }
+        });
     }
 
     public function getFilamentName(): string

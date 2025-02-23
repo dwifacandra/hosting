@@ -8,6 +8,7 @@ use Filament\Forms\Form;
 use Illuminate\Support\Str;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
@@ -78,7 +79,11 @@ trait FormsScheme
                                     ->collection('avatar')
                                     ->visibility('private')
                                     ->alignCenter()
-                                    ->columnSpanFull(),
+                                    ->columnSpanFull()
+                                    ->afterStateUpdated(function ($state, callable $get) {
+                                        $userId = $get('id');
+                                        Cache::forget("user_avatar_{$userId}");
+                                    }),
                             ]),
                         // Forms\Components\Actions::make([
                         //     Forms\Components\Action::make('resend_verification')
